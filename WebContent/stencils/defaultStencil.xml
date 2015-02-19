@@ -1,0 +1,155 @@
+<shapes name="mxGraph.entityrelationship"> 
+  <shape aspect="variable" graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Entity.svg" h="60" name="Entity" strokewidth="inherit" w="98">
+<connections>
+<constraint name="Border" perimeter="0" x="0.5" y="0"/>
+<constraint name="Border" perimeter="0" x="0.25" y="0"/>
+<constraint name="Border" perimeter="0" x="0.75" y="0"/>
+<constraint name="Border" perimeter="0" x="0.5" y="1"/>
+<constraint name="Border" perimeter="0" x="0.25" y="1"/>
+<constraint name="Border" perimeter="0" x="0.75" y="1"/>
+<constraint name="Border" perimeter="0" x="0" y="0.25"/>
+<constraint name="Border" perimeter="0" x="0" y="0.75"/>
+<constraint name="Border" perimeter="0" x="0" y="0.5"/>
+<constraint name="Border" perimeter="0" x="1" y="0.5"/>
+<constraint name="Border" perimeter="0" x="1" y="0.25"/>
+<constraint name="Border" perimeter="0" x="1" y="0.75"/>
+</connections>
+<background>
+<rect h="60" w="98" x="0" y="0"/>
+</background>
+<foreground>
+<fillstroke/>
+</foreground>
+</shape>
+  <shape aspect="variable" graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Relation.svg" h="57.43" name="Relation" strokewidth="inherit" w="98">
+<connections>
+<constraint name="Up" perimeter="0" x="0.5" y="0"/>
+<constraint name="Border" perimeter="0" x="0.25" y="0.25"/>
+<constraint name="Down" perimeter="0" x="0.5" y="1"/>
+<constraint name="Border" perimeter="0" x="0.25" y="0.75"/>
+<constraint name="Left" perimeter="0" x="0" y="0.5"/>
+<constraint name="Border" perimeter="0" x="0.75" y="0.75"/>
+<constraint name="Border" perimeter="0" x="0.75" y="0.25"/>
+<constraint name="Right" perimeter="0" x="1" y="0.5"/>
+
+</connections>
+<background>
+<path>
+<move x="51" y="0.71"/>
+<line x="97" y="26.71"/>
+
+<line x="51" y="56.71"/>
+
+<line x="1" y="30.71"/>
+
+<line x="47" y="0.71"/>
+
+<close/>
+</path>
+</background>
+<foreground>
+<fillstroke/>
+</foreground>
+</shape>
+  <shape aspect="variable" graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Attribute.svg" h="60" name="Attribute" strokewidth="inherit" w="99">
+	<connections>
+		<constraint name="Border" perimeter="0" x="0.5" y="0"/>
+		<constraint name="Border" perimeter="0" x="0.5" y="1"/>
+		<constraint name="Border" perimeter="0" x="0" y="0.5"/>
+		<constraint name="Border" perimeter="0" x="1" y="0.5"/>
+		<constraint name="Border" perimeter="0" x="0.145" y="0.145"/>
+		<constraint name="Border" perimeter="0" x="0.145" y="0.855"/>
+		<constraint name="Border" perimeter="0" x="0.855" y="0.145"/>
+		<constraint name="Border" perimeter="0" x="0.855" y="0.855"/>
+	</connections>
+	<background>
+		<ellipse h="60" w="99" x="0" y="0"/>
+	</background>
+	<foreground>
+		<fillstroke/>
+	</foreground>
+</shape>
+  <shape aspect="variable" graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\KeyAttribute.svg" h="60" name="KeyAttribute" strokewidth="inherit" w="99">
+<connections>
+<constraint name="Border" perimeter="0" x="0.5" y="0"/>
+<constraint name="Border" perimeter="0" x="0.5" y="1"/>
+<constraint name="Border" perimeter="0" x="0" y="0.5"/>
+<constraint name="Border" perimeter="0" x="1" y="0.5"/>
+<constraint name="Border" perimeter="0" x="0.145" y="0.145"/>
+<constraint name="Border" perimeter="0" x="0.145" y="0.855"/>
+<constraint name="Border" perimeter="0" x="0.855" y="0.145"/>
+<constraint name="Border" perimeter="0" x="0.855" y="0.855"/>
+</connections>
+<background>
+<ellipse h="60" w="99" x="0" y="0"/>
+</background>
+<foreground>
+<fillstroke/>
+<path>
+<move x="25" y="45"/>
+<line x="75" y="45"/>
+<close/>
+</path>
+<fillstroke/>
+</foreground>
+</shape>
+  <shape aspect="fixed" graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\MultAttribute.svg" h="60" name="MultAttribute" strokewidth="inherit" w="99">
+<connections>
+<constraint name="Border" perimeter="0" x="0.5" y="0"/>
+<constraint name="Border" perimeter="0" x="0.5" y="1"/>
+<constraint name="Border" perimeter="0" x="0" y="0.5"/>
+<constraint name="Border" perimeter="0" x="1" y="0.5"/>
+<constraint name="Border" perimeter="0" x="0.145" y="0.145"/>
+<constraint name="Border" perimeter="0" x="0.145" y="0.855"/>
+<constraint name="Border" perimeter="0" x="0.855" y="0.145"/>
+<constraint name="Border" perimeter="0" x="0.855" y="0.855"/>
+</connections>
+<background>
+<ellipse h="60" w="99" x="0" y="0"/>
+</background>
+<foreground>
+<fillstroke/>
+<ellipse h="52" w="92" x="3.5" y="3.5"/>
+<fillstroke/>
+</foreground>
+</shape>
+  <shape aspect="fixed" graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\ElemAttribute.svg" h="66" name="ElemAttribute" strokewidth="inherit" w="66">
+<connections>
+<constraint name="Border" perimeter="0" x="0.5" y="0"/>
+<constraint name="Border" perimeter="0" x="0.5" y="1"/>
+<constraint name="Border" perimeter="0" x="0" y="0.5"/>
+<constraint name="Border" perimeter="0" x="1" y="0.5"/>
+<constraint name="Border" perimeter="0" x="0.145" y="0.145"/>
+<constraint name="Border" perimeter="0" x="0.145" y="0.855"/>
+<constraint name="Border" perimeter="0" x="0.855" y="0.145"/>
+<constraint name="Border" perimeter="0" x="0.855" y="0.855"/>
+</connections>
+<background>
+<ellipse h="66" w="66" x="0" y="0"/>
+</background>
+<foreground>
+<fillstroke/>
+</foreground>
+</shape>
+  <shape aspect="variable" graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Generalization.svg" h="97.5" name="Generalization" strokewidth="inherit" w="70">
+<connections>
+<constraint name="Out" perimeter="0" x="0.5" y="0"/>
+<constraint name="In" perimeter="0" x="0.5" y="1"/>
+</connections>
+<background>
+<path>
+<move x="20" y="97.5"/>
+<line x="20" y="38.5"/>
+<line x="0" y="38.5"/>
+<line x="35" y="0"/>
+<line x="70" y="38.5"/>
+<line x="50" y="38.5"/>
+<line x="50" y="97.5"/>
+<close/>
+</path>
+</background>
+<foreground>
+<fillstroke/>
+</foreground>
+</shape>
+</shapes>

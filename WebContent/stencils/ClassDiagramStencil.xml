@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<shapes name="ClassDiagram">
+  <shape aspect="variable" graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_CD\Class.svg" h="99" name="Class" strokewidth="inherit" w="98">
+<connections>
+<constraint name="Border" perimeter="0" x="0.5" y="0"/>
+<constraint name="Border" perimeter="0" x="0.25" y="0"/>
+<constraint name="Border" perimeter="0" x="0.75" y="0"/>
+<constraint name="Border" perimeter="0" x="0.5" y="1"/>
+<constraint name="Border" perimeter="0" x="0.25" y="1"/>
+<constraint name="Border" perimeter="0" x="0.75" y="1"/>
+<constraint name="Border" perimeter="0" x="0" y="0.25"/>
+<constraint name="Border" perimeter="0" x="0" y="0.75"/>
+<constraint name="Border" perimeter="0" x="0" y="0.5"/>
+<constraint name="Border" perimeter="0" x="1" y="0.5"/>
+<constraint name="Border" perimeter="0" x="1" y="0.25"/>
+<constraint name="Border" perimeter="0" x="1" y="0.75"/>
+</connections>
+<background>
+<rect h="99" w="98" x="0" y="0"/>
+<fillstroke/>
+</background>
+<foreground>
+<path>
+<move x="98" y="18"/>
+<line x="0" y="18"/>
+<close/>
+
+<move x="98" y="42"/>
+<line x="0" y="42"/>
+<close/>
+<fillstroke/>
+
+</path>
+</foreground>
+</shape>
+  <shape aspect="variable" graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_CD\Interface.svg" h="115" name="Interface" strokewidth="inherit" w="98">
+<connections>
+<constraint name="Border" perimeter="0" x="0.5" y="0"/>
+<constraint name="Border" perimeter="0" x="0.25" y="0"/>
+<constraint name="Border" perimeter="0" x="0.75" y="0"/>
+<constraint name="Border" perimeter="0" x="0.5" y="1"/>
+<constraint name="Border" perimeter="0" x="0.25" y="1"/>
+<constraint name="Border" perimeter="0" x="0.75" y="1"/>
+<constraint name="Border" perimeter="0" x="0" y="0.25"/>
+<constraint name="Border" perimeter="0" x="0" y="0.75"/>
+<constraint name="Border" perimeter="0" x="0" y="0.5"/>
+<constraint name="Border" perimeter="0" x="1" y="0.5"/>
+<constraint name="Border" perimeter="0" x="1" y="0.25"/>
+<constraint name="Border" perimeter="0" x="1" y="0.75"/>
+</connections>
+<background>
+<rect h="115" w="98" x="0" y="0"/>
+<fillstroke/>
+</background>
+<foreground>
+<path>
+<move x="98" y="30"/>
+<line x="0" y="30"/>
+<close/>
+
+<move x="98" y="50"/>
+<line x="0" y="50"/>
+<close/>
+
+<move x="19" y="14"/>
+<line x="14" y="11"/>
+<close/>
+<move x="19" y="9"/>
+<line x="14" y="11"/>
+<close/>
+
+<move x="14" y="14"/>
+<line x="9" y="11"/>
+<close/>
+<move x="14" y="9"/>
+<line x="9" y="11"/>
+<close/>
+
+<move x="90" y="11"/>
+<line x="85" y="14"/>
+<close/>
+<move x="90" y="11"/>
+<line x="85" y="8"/>
+<close/>
+
+<move x="85" y="11"/>
+<line x="80" y="14"/>
+<close/>
+<move x="85" y="11"/>
+<line x="80" y="8"/>
+<close/>
+
+<fillstroke/>
+
+</path>
+</foreground>
+</shape>
+</shapes>

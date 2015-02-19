@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><language name="EntityRelationship">
+    <token name="entity" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Entity.svg" occurrences="&gt;=1">
+        <ap type="Exit" name="Border" ref="Border" connectNum="&gt;=0"/>
+        <ap type="T" name="BorderT" ref="Border" connectNum="&gt;=0"/>
+    </token>
+    <token name="bin_rel" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Relation.svg" occurrences="&gt;=0">
+        <ap type="Enter" name="UpBR" ref="Up" connectNum="&gt;=0"/>
+        <ap type="Enter" name="DownBR" ref="Down" connectNum="&gt;=0"/>
+        <ap type="Enter" name="LeftBR" ref="Left" connectNum="&gt;=0"/>
+        <ap type="Enter" name="RightBR" ref="Right" connectNum="&gt;=0"/>
+        <ap type="Exit" name="BorderBR" ref="Border" connectNum="&gt;=0"/>
+        <localConstraint>
+			((connectNum(UpBR) + connectNum(DownBR) == 2) &amp;&amp; (connectNum(LeftBR) + connectNum(RightBR) == 0))
+													||
+			((connectNum(LeftBR) + connectNum(RightBR) == 2) &amp;&amp; (connectNum(UpBR) + connectNum(DownBR) == 0))
+		</localConstraint>
+    </token>
+    <token name="tern_rel_down" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Relation.svg" occurrences="&gt;=0">
+        <ap type="Enter" name="UpTR" ref="Up" connectNum="&gt;=0"/>
+        <ap type="Enter" name="DownTR" ref="Down" connectNum="&gt;=0"/>
+        <ap type="Enter" name="LeftTR" ref="Left" connectNum="&gt;=0"/>
+        <ap type="Enter" name="RightTR" ref="Right" connectNum="&gt;=0"/>
+        <ap type="Exit" name="BorderTR" ref="Border" connectNum="&gt;=0"/>
+        <localConstraint>
+			((connectNum(LeftTR) + connectNum(RightTR) == 2) &amp;&amp; (connectNum(UpTR) + connectNum(DownTR) == 1))
+													||
+			((connectNum(UpTR) + connectNum(DownTR) == 2) &amp;&amp; (connectNum(LeftTR) + connectNum(RightTR) == 1))
+		</localConstraint>
+    </token>
+    <token name="attribute" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Attribute.svg" occurrences="&gt;=1">
+        <ap type="Enter" name="BorderAtt" ref="Border" connectNum="==1"/>
+    </token>
+    <token name="key_attribute" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\KeyAttribute.svg" occurrences="&gt;=1">
+        <ap type="Enter" name="BorderKA" ref="Border" connectNum="==1"/>
+    </token>
+    <token name="mval_attribute" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\MultAttribute.svg" occurrences="&gt;=0">
+        <ap type="Enter" name="BorderMA" ref="Border" connectNum="==1"/>
+    </token>
+    <token name="elem_attribute" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\ElemAttribute.svg" occurrences="&gt;=0">
+        <ap type="Elem" name="BorderEA" ref="Border" connectNum="==1"/>
+    </token>
+    <token name="comp_attribute" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Attribute.svg" occurrences="&gt;=0">
+        <ap type="Enter" name="BorderCA" ref="Border" connectNum="&gt;2"/>
+    </token>
+    <token name="generalization" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Generalization.svg" occurrences="&gt;=1">
+        <ap type="Enter" name="InGen" ref="In" connectNum="&gt;1"/>
+        <ap type="T" name="OutGen" ref="Out" connectNum="==1"/>
+    </token>
+    <connector name="line1" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Line.svg">
+        <cap type="Exit" name="ExitA" ref="P1:P2" connectNum="==1"/>
+        <cap type="Enter" name="EnterB" ref="P2:P1" connectNum="==1"/>
+    </connector>
+    <connector name="line2" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Line.svg">
+        <cap type="Elem" name="ElemA" ref="P1:P2" connectNum="==1"/>
+        <cap type="Enter" name="EnterB" ref="P2:P1" connectNum="==1"/>
+    </connector>
+    <connector name="touch" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Touch.svg">
+        <cap type="T" name="TouchA" ref="P1:P2" connectNum="==1"/>
+        <cap type="T" name="TouchB" ref="P1:P2" connectNum="==1"/>
+    </connector>
+    <constraint>connected</constraint>
+</language>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_31">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/xampp/tomcat/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/appengine-api-1.0-sdk-1.7.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/appengine-api-labs.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/appengine-endpoints.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/appengine-jsr107cache-1.7.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsr107cache-1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/junit-4.8.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mxgraph-core.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/vdxio.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-anim.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-awt-util.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-bridge.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-codec.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-css.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-dom.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-ext.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-gvt.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-parser.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-script.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-svg-dom.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-transcoder.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-util.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-xml.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/xml-apis-ext.jar"/>
+	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/WebContent/WEB-INF/lib/LocalContext.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<shapes name="UseCaseDiagram">
+  <shape aspect="variable" graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_UCD\Actor.svg" h="70" name="Actor" strokewidth="inherit" w="37.22">
+<connections>
+<constraint name="Border" perimeter="0" x="0.5" y="0"/>
+<constraint name="Border" perimeter="0" x="0.25" y="0"/>
+<constraint name="Border" perimeter="0" x="0.75" y="0"/>
+<constraint name="Border" perimeter="0" x="0.5" y="1"/>
+<constraint name="Border" perimeter="0" x="0.25" y="1"/>
+<constraint name="Border" perimeter="0" x="0.75" y="1"/>
+<constraint name="Border" perimeter="0" x="0" y="0.25"/>
+<constraint name="Border" perimeter="0" x="0" y="0.75"/>
+<constraint name="Border" perimeter="0" x="0" y="0.5"/>
+<constraint name="Border" perimeter="0" x="1" y="0.5"/>
+<constraint name="Border" perimeter="0" x="1" y="0.25"/>
+<constraint name="Border" perimeter="0" x="1" y="0.75"/>
+</connections>
+<background>
+<rect h="70" w="37.22" x="0" y="0"/>
+<fillstroke/>
+</background>
+<foreground>
+<ellipse h="16.32" w="16.32" x="9.95" y="0"/>
+<fillstroke/>
+<path>
+<move x="18.47" y="55.34"/>
+<line x="18.47" y="15.75"/>
+<close/>
+<move x="8" y="35"/>
+<line x="28" y="35"/>
+<close/>
+<move x="28" y="65"/>
+<line x="18" y="55"/>
+<close/>
+<move x="8" y="65"/>
+<line x="18" y="55"/>
+<close/>
+
+</path>
+<fillstroke/>
+</foreground>
+</shape>
+  <shape aspect="variable" graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_UCD\UseCase.svg" h="40" name="UseCase" strokewidth="inherit" w="99">
+	<connections>
+		<constraint name="Border" perimeter="0" x="0.5" y="0"/>
+		<constraint name="Border" perimeter="0" x="0.5" y="1"/>
+		<constraint name="Border" perimeter="0" x="0" y="0.5"/>
+		<constraint name="Border" perimeter="0" x="1" y="0.5"/>
+		<constraint name="Border" perimeter="0" x="0.145" y="0.145"/>
+		<constraint name="Border" perimeter="0" x="0.145" y="0.855"/>
+		<constraint name="Border" perimeter="0" x="0.855" y="0.145"/>
+		<constraint name="Border" perimeter="0" x="0.855" y="0.855"/>
+	</connections>
+	<background>
+		<ellipse h="40" w="99" x="0" y="0"/>
+	</background>
+	<foreground>
+		<fillstroke/>
+	</foreground>
+</shape>
+</shapes>

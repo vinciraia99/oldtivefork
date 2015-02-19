@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<connectors name="EntityRelationship">
+  <connector graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Line.svg">
+	<values code="content.appendChild(this.createEdgeTemplate('graphicRef=.\\\Unisa\\\Magistrale\\\Tesi\\\DocumentazioneLaurino\\\SVG\\\Svg_ER\\\Line.svg;edgeStyle=none;endArrow=none;', 100, 100, '', 'Line', true));" name="Line"/>
+</connector>
+  <connector graphicRef=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Touch.svg">
+	<values code="graphicRef=.\\\Unisa\\\Magistrale\\\Tesi\\\DocumentazioneLaurino\\\SVG\\\Svg_ER\\\Touch.svg;" name="Touch"/>
+</connector>
+</connectors>
