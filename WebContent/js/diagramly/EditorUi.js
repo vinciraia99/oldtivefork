@@ -713,8 +713,7 @@
 			{	
 				for(k=0;k<sym.edges.length;k++)
 				{
-					console.log(sym.edges[k].source.id);
-					console.log(sym.edges[k].target.id);
+					
 					
 					if(sym == sym.edges[k].source)
 					{
@@ -986,8 +985,7 @@
 			{	
 				for(k=0;k<sym.edges.length;k++)
 				{
-					console.log(sym.edges[k].source.id);
-					console.log(sym.edges[k].target.id);
+					
 					
 					if(sym == sym.edges[k].source)
 					{

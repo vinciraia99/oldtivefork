@@ -22,21 +22,21 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/junit-4.8.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mxgraph-core.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/vdxio.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-anim.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-awt-util.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-bridge.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-codec.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-css.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-dom.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-ext.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-gvt.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-parser.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-script.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-svg-dom.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-transcoder.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-util.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/batik-xml.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/etc/lib/xml-apis-ext.jar"/>
-	<classpathentry kind="lib" path="C:/TesiWorkspace/Prova3/WebContent/WEB-INF/lib/LocalContext.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-anim.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-awt-util.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-bridge.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-codec.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-css.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-dom.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-ext.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-gvt.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-parser.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-script.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-svg-dom.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-transcoder.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-util.jar"/>
+	<classpathentry kind="lib" path="etc/lib/batik-xml.jar"/>
+	<classpathentry kind="lib" path="etc/lib/xml-apis-ext.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/LocalContext.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
