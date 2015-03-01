@@ -4,27 +4,23 @@
         <ap type="T" name="BorderT" ref="Border" connectNum="&gt;=0"/>
     </token>
     <token name="bin_rel" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Relation.svg" occurrences="&gt;=0">
-        <ap type="Enter" name="UpBR" ref="Up" connectNum="&gt;=0"/>
-        <ap type="Enter" name="DownBR" ref="Down" connectNum="&gt;=0"/>
-        <ap type="Enter" name="LeftBR" ref="Left" connectNum="&gt;=0"/>
-        <ap type="Enter" name="RightBR" ref="Right" connectNum="&gt;=0"/>
+        <ap type="Enter" name="UpBR" ref="Up" connectNum="&lt;=1"/>
+        <ap type="Enter" name="DownBR" ref="Down" connectNum="&lt;=1"/>
+        <ap type="Enter" name="LeftBR" ref="Left" connectNum="&lt;=1"/>
+        <ap type="Enter" name="RightBR" ref="Right" connectNum="&lt;=1"/>
         <ap type="Exit" name="BorderBR" ref="Border" connectNum="&gt;=0"/>
         <localConstraint>
-			((connectNum(UpBR) + connectNum(DownBR) == 2) &amp;&amp; (connectNum(LeftBR) + connectNum(RightBR) == 0))
-													||
-			((connectNum(LeftBR) + connectNum(RightBR) == 2) &amp;&amp; (connectNum(UpBR) + connectNum(DownBR) == 0))
+			(connectNum(UpBR) + connectNum(DownBR) + connectNum(LeftBR) + connectNum(RightBR)) == 2
 		</localConstraint>
     </token>
     <token name="tern_rel_down" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Relation.svg" occurrences="&gt;=0">
-        <ap type="Enter" name="UpTR" ref="Up" connectNum="&gt;=0"/>
-        <ap type="Enter" name="DownTR" ref="Down" connectNum="&gt;=0"/>
-        <ap type="Enter" name="LeftTR" ref="Left" connectNum="&gt;=0"/>
-        <ap type="Enter" name="RightTR" ref="Right" connectNum="&gt;=0"/>
+        <ap type="Enter" name="UpTR" ref="Up" connectNum="&lt;=1"/>
+        <ap type="Enter" name="DownTR" ref="Down" connectNum="&lt;=1"/>
+        <ap type="Enter" name="LeftTR" ref="Left" connectNum="&lt;=1"/>
+        <ap type="Enter" name="RightTR" ref="Right" connectNum="&lt;=1"/>
         <ap type="Exit" name="BorderTR" ref="Border" connectNum="&gt;=0"/>
         <localConstraint>
-			((connectNum(LeftTR) + connectNum(RightTR) == 2) &amp;&amp; (connectNum(UpTR) + connectNum(DownTR) == 1))
-													||
-			((connectNum(UpTR) + connectNum(DownTR) == 2) &amp;&amp; (connectNum(LeftTR) + connectNum(RightTR) == 1))
+			(connectNum(UpTR) + connectNum(DownTR) + connectNum(LeftTR) + connectNum(RightTR)) == 3
 		</localConstraint>
     </token>
     <token name="attribute" ref=".\Unisa\Magistrale\Tesi\DocumentazioneLaurino\SVG\Svg_ER\Attribute.svg" occurrences="&gt;=1">

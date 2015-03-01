@@ -5,6 +5,7 @@ access_denied=Accesso negato
 actualSize=Dimensione attuale
 addToExistingDrawing=Aggiungi al disegno esistente
 addWaypoint=Add waypoint
+check=Verifica Correttezza
 align=Allinea
 alignment=Allineamento
 allChangesLost=Tutti i cambiamenti saranno persi!

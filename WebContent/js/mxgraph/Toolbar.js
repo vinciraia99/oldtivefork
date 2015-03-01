@@ -203,7 +203,7 @@ Toolbar.prototype.addItem = function(sprite, key)
 {
 	var action = this.editorUi.actions.get(key);
 	var elt = null;
-	
+	console.log(action);
 	if (action != null)
 	{
 		elt = this.addButton(sprite, action.label, action.funct);
