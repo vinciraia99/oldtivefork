@@ -45,7 +45,7 @@ Actions.prototype.init = function()
 		{
 			try
 			{
-				console.log("Prova import");
+				//console.log("Prova import");
 				//console.log(xml);
 				var doc = mxUtils.parseXml(xml);
 				//console.log(doc);

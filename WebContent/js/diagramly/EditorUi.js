@@ -566,13 +566,13 @@
 		{
 			return;
 		}
-		console.log(this.editor.graph.getModel());
+		//console.log(this.editor.graph.getModel());
 		var xml = mxUtils.getXml(this.editor.getGraphXml());
 		xml="<mxGraphModel>"+xml+"</mxGraphModel>";
 
 		if (!mxIntegration.loggedOut && mxGoogleDrive.isDriveReady())
 		{
-			console.log("GD");
+			//console.log("GD");
 			if (urlParams['state'] != null)
 			{
 				var tmp = JSON.parse(decodeURIComponent(urlParams['state']));
@@ -590,7 +590,7 @@
 		}
 		else if (useLocalStorage)
 		{
-			console.log("LS");
+			//console.log("LS");
 			if (localStorage.getItem(name) != null && !mxUtils.confirm(mxResources.get('replace', [ name ])))
 			{
 				return;
@@ -604,7 +604,7 @@
 		}
 		else
 		{
-			console.log("Normale?");
+			//console.log("Normale?");
 			if (xml.length < MAX_REQUEST_SIZE)
 			{
 				xml = encodeURIComponent(xml);
@@ -633,16 +633,16 @@
 		{
 			return;
 		}
-		console.log(this.editor.graph.getModel());
+		//console.log(this.editor.graph.getModel());
 		var model = this.editor.graph.getModel();
-		for  (var item in model.cells) {
+		/*for  (var item in model.cells) {
 			  console.log(item);
-			}
+			}*/
 		var x =mxUtils.createXmlDocument();
 		xmlDoc = x.implementation.createDocument("", "", null);
 		root = xmlDoc.createElement("language");
 		xmlDoc.appendChild(root);
-		console.log(xmlDoc);
+		//console.log(xmlDoc);
 		var symbols = new Array();
 		var connectors = new Array();
 		for  (var item in model.cells) {
@@ -651,18 +651,18 @@
 			if(model.cells[item].vertex)
 			{
 				//model.cells[item].id="S_"+model.cells[item].id;
-				console.log(model.cells[item]);
+				//console.log(model.cells[item]);
 				symbols.push(model.cells[item]);
 			}
 			else if(model.cells[item].edge)
 			{
 				//model.cells[item].id="C_"+model.cells[item].id;
-				console.log(model.cells[item]);
+				//console.log(model.cells[item]);
 				connectors.push(model.cells[item]);
 			}
 		}
-		console.log(symbols);
-		console.log(connectors);
+		/*console.log(symbols);
+		console.log(connectors);*/
 		
 		/*Set id vertici e connettori*/
 		/*i=2;
@@ -701,7 +701,7 @@
 			var sym = symbols[j];
 			var value = sym.value;
 			
-			console.log(value);
+			//console.log(value);
 			elem = xmlDoc.createElement("symbol");
 			/*attr = xmlDoc.createAttribute("id");
 			attr.value = symbols[j].id;*/
@@ -719,7 +719,7 @@
 					{
 						attP = xmlDoc.createElement("ap");
 						elem.appendChild(attP);
-						console.log("Is source");
+						//console.log("Is source");
 						/*console.log(cellStates.get(sym.edges[k].mxObjectId));
 						console.log(sym.mxObjectId);
 						for(y=0;y<cellStates.length;y++)
@@ -740,14 +740,14 @@
 						states=grp.getView().getCellStates(new Array(sym,sym.edges[k]));
 						connP = grp.getConnectionConstraint(states[1],states[0],true);
 						//connP = grp.getConnectionConstraint(edgeState,vertexState,true);
-						console.log(connP);
+						//console.log(connP);
 						var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
 						for( x=0;x<conns.length;x++)
 						{
 							if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
 							{
 								nameAp = conns[x].getAttribute("name");
-								console.log(nameAp);
+								//console.log(nameAp);
 							}
 						}	
 						attP.setAttribute("graphicRef",nameAp);
@@ -767,7 +767,7 @@
 					{
 						attP = xmlDoc.createElement("ap");
 						elem.appendChild(attP);
-						 console.log("Is target");
+						 //console.log("Is target");
 						/*for(y=0;y<cellStates.length;y++)
 						{
 							if(cellStates[y].cell==sym)
@@ -786,14 +786,14 @@
 						
 						states=grp.getView().getCellStates(new Array(sym,sym.edges[k]));
 						connP = grp.getConnectionConstraint(states[1],states[0],false);
-						console.log(connP);
+						//console.log(connP);
 						var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
 						for( x=0;x<conns.length;x++)
 						{
 							if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
 							{
 								nameAp = conns[x].getAttribute("name");
-								console.log(nameAp);
+								//console.log(nameAp);
 							}
 						}
 						attP.setAttribute("graphicRef",nameAp);
@@ -816,7 +816,7 @@
 		{
 			con = connectors[i];
 			style = grp.getCellStyle(con);
-			console.log(style);
+			//console.log(style);
 			connector = xmlDoc.createElement("connector");
 			connector.setAttribute("id","C_"+con.id);
 			if(style.endArrow == undefined)
@@ -843,7 +843,7 @@
 		
 		if (!mxIntegration.loggedOut && mxGoogleDrive.isDriveReady())
 		{
-			console.log("GD");
+			//console.log("GD");
 			if (urlParams['state'] != null)
 			{
 				var tmp = JSON.parse(decodeURIComponent(urlParams['state']));
@@ -861,7 +861,7 @@
 		}
 		else if (useLocalStorage)
 		{
-			console.log("LS");
+			//console.log("LS");
 			if (localStorage.getItem(name) != null && !mxUtils.confirm(mxResources.get('replace', [ name ])))
 			{
 				return;
@@ -875,7 +875,7 @@
 		}
 		else
 		{
-			console.log("Normale?");
+			//console.log("Normale?");
 			if (xml.length < MAX_REQUEST_SIZE)
 			{
 				xml = encodeURIComponent(xml);
@@ -904,17 +904,17 @@
 		if (name == null)
 		{
 			return;
-		}
-		console.log(this.editor.graph.getModel());
+		} 
+		//console.log(this.editor.graph.getModel());
 		var model = this.editor.graph.getModel();
-		for  (var item in model.cells) {
+		/*for  (var item in model.cells) {
 			  console.log(item);
-			}
+			}*/
 		var x =mxUtils.createXmlDocument();
 		xmlDoc = x.implementation.createDocument("", "", null);
 		root = xmlDoc.createElement("language");
 		xmlDoc.appendChild(root);
-		console.log(xmlDoc);
+		//console.log(xmlDoc);
 		var symbols = new Array();
 		var connectors = new Array();
 		for  (var item in model.cells) {
@@ -923,18 +923,18 @@
 			if(model.cells[item].vertex)
 			{
 				//model.cells[item].id="S_"+model.cells[item].id;
-				console.log(model.cells[item]);
+				//console.log(model.cells[item]);
 				symbols.push(model.cells[item]);
 			}
 			else if(model.cells[item].edge)
 			{
 				//model.cells[item].id="C_"+model.cells[item].id;
-				console.log(model.cells[item]);
+				//console.log(model.cells[item]);
 				connectors.push(model.cells[item]);
 			}
 		}
-		console.log(symbols);
-		console.log(connectors);
+		/*console.log(symbols);
+		console.log(connectors);*/
 		
 		/*Set id vertici e connettori*/
 		/*i=2;
@@ -973,7 +973,7 @@
 			var sym = symbols[j];
 			var value = sym.value;
 			
-			console.log(value);
+			//console.log(value);
 			elem = xmlDoc.createElement("symbol");
 			/*attr = xmlDoc.createAttribute("id");
 			attr.value = symbols[j].id;*/
@@ -991,7 +991,7 @@
 					{
 						attP = xmlDoc.createElement("ap");
 						elem.appendChild(attP);
-						console.log("Is source");
+						//console.log("Is source");
 						/*console.log(cellStates.get(sym.edges[k].mxObjectId));
 						console.log(sym.mxObjectId);
 						for(y=0;y<cellStates.length;y++)
@@ -1012,14 +1012,14 @@
 						states=grp.getView().getCellStates(new Array(sym,sym.edges[k]));
 						connP = grp.getConnectionConstraint(states[1],states[0],true);
 						//connP = grp.getConnectionConstraint(edgeState,vertexState,true);
-						console.log(connP);
+						//console.log(connP);
 						var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
 						for( x=0;x<conns.length;x++)
 						{
 							if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
 							{
 								nameAp = conns[x].getAttribute("name");
-								console.log(nameAp);
+								//console.log(nameAp);
 							}
 						}	
 						attP.setAttribute("graphicRef",nameAp);
@@ -1039,7 +1039,7 @@
 					{
 						attP = xmlDoc.createElement("ap");
 						elem.appendChild(attP);
-						 console.log("Is target");
+						// console.log("Is target");
 						/*for(y=0;y<cellStates.length;y++)
 						{
 							if(cellStates[y].cell==sym)
@@ -1058,14 +1058,14 @@
 						
 						states=grp.getView().getCellStates(new Array(sym,sym.edges[k]));
 						connP = grp.getConnectionConstraint(states[1],states[0],false);
-						console.log(connP);
+						//console.log(connP);
 						var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
 						for( x=0;x<conns.length;x++)
 						{
 							if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
 							{
 								nameAp = conns[x].getAttribute("name");
-								console.log(nameAp);
+								//console.log(nameAp);
 							}
 						}
 						attP.setAttribute("graphicRef",nameAp);
@@ -1088,7 +1088,7 @@
 		{
 			con = connectors[i];
 			style = grp.getCellStyle(con);
-			console.log(style);
+			//console.log(style);
 			connector = xmlDoc.createElement("connector");
 			connector.setAttribute("id","C_"+con.id);
 			if(style.endArrow == undefined)
@@ -1113,7 +1113,7 @@
 		
 		//var xml = mxUtils.getXml(this.editor.getGraphXml());	
 		
-			console.log("Normale?");
+			//console.log("Normale?");
 			if (xml.length < MAX_REQUEST_SIZE)
 			{
 				xml = encodeURIComponent(xml);

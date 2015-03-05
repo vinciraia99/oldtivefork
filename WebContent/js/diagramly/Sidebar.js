@@ -19,7 +19,7 @@
 	mxStencilRegistry.libraries['mockup/misc'] = [SHAPES_PATH + '/mockup/mxMockupMisc.js', STENCIL_PATH + '/mockup/misc.xml'];
 	mxStencilRegistry.libraries['mockup/navigation'] = [SHAPES_PATH + '/mockup/mxMockupNavigation.js', STENCIL_PATH + '/mockup/misc.xml'];
 	mxStencilRegistry.libraries['mockup/text'] = [SHAPES_PATH + '/mockup/mxMockupText.js'];
-	console.log(this.palettes);
+	//console.log(this.palettes);
 	/**
 	 * Toggle palette.
 	 */
@@ -90,7 +90,7 @@
         xhttp.open("GET",'./defaultDefinition.xml',false);
         xhttp.send();
         var response = xhttp.responseXML; 
-        console.log(xhttp.responseXML);
+        //console.log(xhttp.responseXML);
         var languageName = response.documentElement.getAttribute("name");
 		this.addCustomStencilPalette(languageName,languageName,dir+'/defaultStencil.xml',';fillColor=#ffffff;strokeColor=#000000;strokeWidth=2',dir+'/defaultConnectors.xml');
 		/*this.addCustomStencilPalette('EntityRelationship', 'ER', dir + '/EntityRelationshipStencil.xml',

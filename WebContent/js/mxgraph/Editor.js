@@ -921,7 +921,7 @@ Editor.prototype.initStencilRegistry = function()
 		
 			mxStencilRegistry.parseStencilSet(xmlDoc, postStencilLoad, install);
 		}
-		console.log(xmlDoc);
+		//console.log(xmlDoc);
 	};
 	
 	// Parses the given stencil set

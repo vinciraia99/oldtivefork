@@ -1260,8 +1260,8 @@ Sidebar.prototype.addStencilPalette = function(id, title, stencilFile, style, ig
 		//console.log();
 		shapes = root.getElementsByTagName("shape");
 		console.log(shapes);*/
-		console.log("Prova shape");
-		console.log(shape);
+		//console.log("Prova shape");
+		//console.log(shape);
 		mxStencilRegistry.loadStencilSet(stencilFile, mxUtils.bind(this, function(packageName, stencilName, displayName, w, h)
 		{
 			if (ignore == null || mxUtils.indexOf(ignore, stencilName) < 0)
@@ -1313,8 +1313,8 @@ Sidebar.prototype.addCustomStencilPalette = function(id, title, stencilFile, sty
 		//console.log();
 		shapes = root.getElementsByTagName("shape");
 		console.log(shapes);*/
-		console.log("Prova shape");
-		console.log(shape);
+		//console.log("Prova shape");
+		//console.log(shape);
 		mxStencilRegistry.loadStencilSet(stencilFile, mxUtils.bind(this, function(packageName, stencilName, displayName, w, h)
 		{
 			if (ignore == null || mxUtils.indexOf(ignore, stencilName) < 0)
@@ -1348,7 +1348,7 @@ Sidebar.prototype.addCustomStencilPalette = function(id, title, stencilFile, sty
 
         xhttp.open("GET",connectorsFile,false);
         xhttp.send();
-        console.log(xhttp.responseXML.getElementsByTagName("connector")[0].getElementsByTagName("values")[0]);
+       // console.log(xhttp.responseXML.getElementsByTagName("connector")[0].getElementsByTagName("values")[0]);
 	   
         var connectors = xhttp.responseXML.getElementsByTagName("connector");
         
@@ -1356,7 +1356,7 @@ Sidebar.prototype.addCustomStencilPalette = function(id, title, stencilFile, sty
         {
         	
         	var value = connectors[i].getElementsByTagName("values")[0];
-        	console.log(value.getAttribute("name"));
+        	//console.log(value.getAttribute("name"));
         	if(value.getAttribute("name") !="Touch")
         	{
         		

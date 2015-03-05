@@ -190,7 +190,7 @@ Toolbar.prototype.addItems = function(keys)
 		}
 		else
 		{
-			console.log('geSprite-' + key.toLowerCase());
+			//console.log('geSprite-' + key.toLowerCase());
 			this.addItem('geSprite-' + key.toLowerCase(), key);
 		}
 	}
@@ -203,12 +203,12 @@ Toolbar.prototype.addItem = function(sprite, key)
 {
 	var action = this.editorUi.actions.get(key);
 	var elt = null;
-	console.log(action);
+	//console.log(action);
 	if (action != null)
 	{
 		elt = this.addButton(sprite, action.label, action.funct);
 		elt.setEnabled(action.enabled);
-		console.log(elt);
+		//console.log(elt);
 		action.addListener('stateChanged', function()
 		{
 			elt.setEnabled(action.enabled);
