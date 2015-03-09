@@ -636,7 +636,7 @@ function setCurrentXml(data, filename)
 			// Decodes the style if required
 			if (style == null || style == '')
 			{
-				var node2 = mxUtils.load(STYLE_PATH + '/default-old.xml').getDocumentElement();
+				var node2 = mxUtils.load(STYLE_PATH + '/default.xml').getDocumentElement();
 				var dec2 = new mxCodec(node2.ownerDocument);
 				dec2.decode(node2, this.graph.getStylesheet());
 			}

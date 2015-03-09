@@ -796,7 +796,7 @@ Editor.prototype.createUndoManager = function()
 Editor.prototype.initStencilRegistry = function()
 {
 	// Loads default stencils
-	mxStencilRegistry.loadStencilSet(STENCIL_PATH + '/general.xml');
+	mxStencilRegistry.loadStencilSet(STENCIL_PATH + '/defaultStencil.xml');
 };
 
 /**
