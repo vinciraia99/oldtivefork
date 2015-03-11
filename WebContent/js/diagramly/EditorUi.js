@@ -752,14 +752,28 @@
 						}	
 						attP.setAttribute("graphicRef",nameAp);
 						edgSt = grp.getCellStyle(sym.edges[k]);
-						if(edgSt.endArrow == undefined)
+						console.log(edgSt);
+						edgAtP = edgSt.attP;
+						
+						if(edgAtP.indexOf(":")>-1)
+						{
+							attacchingPoints = edgAtP.split("-");
+							attPoint=attacchingPoints[0].split(":")[0];
+							attP.setAttribute("connRef","C_"+sym.edges[k].id+"."+attPoint);
+						}
+						else
+						{
+							attacchingPoints = edgAtP.split("-");
+							attP.setAttribute("connRef","C_"+sym.edges[k].id+"."+attacchingPoints[0]);
+						}
+						/*if(edgSt.endArrow == undefined)
 						{
 							attP.setAttribute("connRef","C_"+sym.edges[k].id+".P1");
 						}	
 						else
 						{
 							attP.setAttribute("connRef","C_"+sym.edges[k].id+".Tail");
-						}	
+						}*/	
 						//console.log(grp.getCellStyle(sym.edges[k]).endArrow);
 						/*Controllo per identificare il nome*/
 					}	
@@ -798,14 +812,26 @@
 						}
 						attP.setAttribute("graphicRef",nameAp);
 						edgSt = grp.getCellStyle(sym.edges[k]);
-						if(edgSt.endArrow == undefined)
+						edgAtP = edgSt.attP;
+						if(edgAtP.indexOf(":")>-1)
+						{
+							attacchingPoints = edgAtP.split("-");
+							attPoint=attacchingPoints[0].split(":")[1];
+							attP.setAttribute("connRef","C_"+sym.edges[k].id+"."+attPoint);
+						}
+						else
+						{
+							attacchingPoints = edgAtP.split("-");
+							attP.setAttribute("connRef","C_"+sym.edges[k].id+"."+attacchingPoints[1]);
+						}
+						/*if(edgSt.endArrow == undefined)
 						{
 							attP.setAttribute("connRef","C_"+sym.edges[k].id+".P2");
 						}	
 						else
 						{
 							attP.setAttribute("connRef","C_"+sym.edges[k].id+".Head");
-						}	
+						}*/	
 					}	
 				}
 			}
@@ -1024,14 +1050,27 @@
 						}	
 						attP.setAttribute("graphicRef",nameAp);
 						edgSt = grp.getCellStyle(sym.edges[k]);
-						if(edgSt.endArrow == undefined)
+						edgAtP = edgSt.attP;
+						
+						if(edgAtP.indexOf(":")>-1)
+						{
+							attacchingPoints = edgAtP.split("-");
+							attPoint=attacchingPoints[0].split(":")[0];
+							attP.setAttribute("connRef","C_"+sym.edges[k].id+"."+attPoint);
+						}
+						else
+						{
+							attacchingPoints = edgAtP.split("-");
+							attP.setAttribute("connRef","C_"+sym.edges[k].id+"."+attacchingPoints[0]);
+						}
+						/*if(edgSt.endArrow == undefined)
 						{
 							attP.setAttribute("connRef","C_"+sym.edges[k].id+".P1");
 						}	
 						else
 						{
 							attP.setAttribute("connRef","C_"+sym.edges[k].id+".Tail");
-						}	
+						}*/	
 						//console.log(grp.getCellStyle(sym.edges[k]).endArrow);
 						/*Controllo per identificare il nome*/
 					}	
@@ -1070,14 +1109,26 @@
 						}
 						attP.setAttribute("graphicRef",nameAp);
 						edgSt = grp.getCellStyle(sym.edges[k]);
-						if(edgSt.endArrow == undefined)
+						edgAtP = edgSt.attP;
+						if(edgAtP.indexOf(":")>-1)
+						{
+							attacchingPoints = edgAtP.split("-");
+							attPoint=attacchingPoints[0].split(":")[1];
+							attP.setAttribute("connRef","C_"+sym.edges[k].id+"."+attPoint);
+						}
+						else
+						{
+							attacchingPoints = edgAtP.split("-");
+							attP.setAttribute("connRef","C_"+sym.edges[k].id+"."+attacchingPoints[1]);
+						}
+						/*if(edgSt.endArrow == undefined)
 						{
 							attP.setAttribute("connRef","C_"+sym.edges[k].id+".P2");
 						}	
 						else
 						{
 							attP.setAttribute("connRef","C_"+sym.edges[k].id+".Head");
-						}	
+						}*/	
 					}	
 				}
 			}
