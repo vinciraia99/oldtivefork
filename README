@@ -1,3 +1,8 @@
+LCDraw Editor project sources
+-----------------------
+The project is based on draw.io, whose source code is available at https://github.com/rmoriz/draw.io
+The source of LCDraw Editor is Apache 2.0 licensed
+
 draw.io project sources
 -----------------------
 

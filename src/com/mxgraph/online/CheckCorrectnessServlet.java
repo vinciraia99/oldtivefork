@@ -87,7 +87,7 @@ public class CheckCorrectnessServlet extends HttpServlet {
 					PrintWriter out = response.getWriter();
 					ByteArrayInputStream input = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8));
 					
-					String output = Tester.run(input, new FileInputStream(new File(s+"defaultDefinition.xml")));
+					String output = Tester.run(input, new FileInputStream(new File(s+"defaultDefinition.xml"))).description;
 					out.print(output);
 				}
 			}
