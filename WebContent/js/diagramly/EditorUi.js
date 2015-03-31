@@ -741,15 +741,20 @@
 						connP = grp.getConnectionConstraint(states[1],states[0],true);
 						//connP = grp.getConnectionConstraint(edgeState,vertexState,true);
 						//console.log(connP);
-						var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
-						for( x=0;x<conns.length;x++)
-						{
-							if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
+						if(connP.point != null)
+						{	
+							var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
+							for( x=0;x<conns.length;x++)
 							{
-								nameAp = conns[x].getAttribute("name");
-								//console.log(nameAp);
+								if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
+								{
+									nameAp = conns[x].getAttribute("name");
+									//console.log(nameAp);
+								}
 							}
-						}	
+						}
+						else
+							nameAp="Border"
 						attP.setAttribute("graphicRef",nameAp);
 						edgSt = grp.getCellStyle(sym.edges[k]);
 						console.log(edgSt);
@@ -801,15 +806,20 @@
 						states=grp.getView().getCellStates(new Array(sym,sym.edges[k]));
 						connP = grp.getConnectionConstraint(states[1],states[0],false);
 						//console.log(connP);
-						var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
-						for( x=0;x<conns.length;x++)
-						{
-							if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
+						if(connP.point != null)
+						{	
+							var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
+							for( x=0;x<conns.length;x++)
 							{
-								nameAp = conns[x].getAttribute("name");
-								//console.log(nameAp);
+								if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
+								{
+									nameAp = conns[x].getAttribute("name");
+									//console.log(nameAp);
+								}
 							}
 						}
+						else
+							nameAp="Border";
 						attP.setAttribute("graphicRef",nameAp);
 						edgSt = grp.getCellStyle(sym.edges[k]);
 						edgAtP = edgSt.attP;
@@ -1038,16 +1048,24 @@
 						states=grp.getView().getCellStates(new Array(sym,sym.edges[k]));
 						connP = grp.getConnectionConstraint(states[1],states[0],true);
 						//connP = grp.getConnectionConstraint(edgeState,vertexState,true);
-						//console.log(connP);
-						var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
-						for( x=0;x<conns.length;x++)
-						{
-							if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
+						console.log(connP);
+						if(connP.point != null)
+						{	
+							var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
+							for( x=0;x<conns.length;x++)
 							{
-								nameAp = conns[x].getAttribute("name");
-								//console.log(nameAp);
+								if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
+								{
+									nameAp = conns[x].getAttribute("name");
+									//console.log(nameAp);
+								}
 							}
+						}
+						else
+						{
+							nameAp="Border";
 						}	
+						
 						attP.setAttribute("graphicRef",nameAp);
 						edgSt = grp.getCellStyle(sym.edges[k]);
 						edgAtP = edgSt.attP;
@@ -1098,15 +1116,20 @@
 						states=grp.getView().getCellStates(new Array(sym,sym.edges[k]));
 						connP = grp.getConnectionConstraint(states[1],states[0],false);
 						//console.log(connP);
-						var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
-						for( x=0;x<conns.length;x++)
-						{
-							if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
+						if(connP.point !=null)
+						{	
+							var conns = value.getElementsByTagName("connections")[0].getElementsByTagName("constraint");
+							for( x=0;x<conns.length;x++)
 							{
-								nameAp = conns[x].getAttribute("name");
-								//console.log(nameAp);
+								if(connP.point.x == conns[x].getAttribute("x") && connP.point.y == conns[x].getAttribute("y") )
+								{
+									nameAp = conns[x].getAttribute("name");
+									//console.log(nameAp);
+								}
 							}
 						}
+						else
+							nameAp="Border";
 						attP.setAttribute("graphicRef",nameAp);
 						edgSt = grp.getCellStyle(sym.edges[k]);
 						edgAtP = edgSt.attP;
