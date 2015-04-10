@@ -754,7 +754,7 @@
 							}
 						}
 						else
-							nameAp="Border"
+							nameAp="Border";
 						attP.setAttribute("graphicRef",nameAp);
 						edgSt = grp.getCellStyle(sym.edges[k]);
 						console.log(edgSt);
