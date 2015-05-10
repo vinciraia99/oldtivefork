@@ -1292,7 +1292,7 @@ Sidebar.prototype.addCustomStencilPalette = function(id, title, stencilFile, sty
 {
 	scale = (scale != null) ? scale : 1;
 	
-	this.addPalette(id, title, false, mxUtils.bind(this, function(content)
+	this.addPalette(id, title, true, mxUtils.bind(this, function(content)
     {
 		if (style == null)
 		{
