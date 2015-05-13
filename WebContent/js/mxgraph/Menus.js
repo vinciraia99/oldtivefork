@@ -298,7 +298,7 @@ Menus.prototype.init = function()
 	})));
 	this.put('options', new Menu(mxUtils.bind(this, function(menu, parent)
 	{
-		this.addMenuItems(menu, ['grid', 'guides', 'tooltips', '-', 'connect', 'copyConnect', 'navigation',
+		this.addMenuItems(menu, ['grid', 'guides', 'tooltips', '-', /*'connect', 'copyConnect',*/ 'navigation',
 		                         'scrollbars', '-', 'pageView', '-', 'pageBackgroundColor']);
 	})));
 	this.put('help', new Menu(mxUtils.bind(this, function(menu, parent)

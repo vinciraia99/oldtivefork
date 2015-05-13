@@ -12,7 +12,7 @@ Graph = function(container, model, renderHint, stylesheet)
 {
 	mxGraph.call(this, container, model, renderHint, stylesheet);
 	
-	this.setConnectable(true);
+	this.setConnectable(false);
 	this.setDropEnabled(true);
 	this.setPanning(true);
 	this.setTooltips(!mxClient.IS_TOUCH);
@@ -22,7 +22,7 @@ Graph = function(container, model, renderHint, stylesheet)
 	this.constrainChildren = false;
 	
 	// Enables cloning of connection sources
-	this.connectionHandler.setCreateTarget(true);
+	this.connectionHandler.setCreateTarget(false);
 	
 	// Disables built-in connection starts
 	this.connectionHandler.isValidSource = function()
