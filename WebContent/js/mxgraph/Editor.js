@@ -131,7 +131,8 @@ Editor.prototype.setGraphXml = function(node)
 		this.graph.gridEnabled = node.getAttribute('grid') != '0';
 		this.graph.graphHandler.guidesEnabled = node.getAttribute('guides') != '0';
 		this.graph.setTooltips(node.getAttribute('tooltips') != '0');
-		this.graph.setConnectable(node.getAttribute('connect') != '0');
+		//this.graph.setConnectable(node.getAttribute('connect') != '0');
+		this.graph.setConnectable(false);
 		this.graph.foldingEnabled = node.getAttribute('fold') != '0';
 		this.graph.scrollbars = node.getAttribute('scrollbars') != '0';
 		

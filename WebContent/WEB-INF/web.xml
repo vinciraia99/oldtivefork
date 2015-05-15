@@ -6,6 +6,16 @@
   </welcome-file-list>
   <servlet>
     <description></description>
+    <display-name>SavePreviewServlet</display-name>
+    <servlet-name>SavePreviewServlet</servlet-name>
+    <servlet-class>com.mxgraph.online.SavePreviewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SavePreviewServlet</servlet-name>
+    <url-pattern>/save_preview</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>CheckCorrectnessServlet</display-name>
     <servlet-name>CheckCorrectnessServlet</servlet-name>
     <servlet-class>com.mxgraph.online.CheckCorrectnessServlet</servlet-class>

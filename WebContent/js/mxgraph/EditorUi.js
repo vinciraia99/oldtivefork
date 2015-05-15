@@ -317,6 +317,56 @@ EditorUi.prototype.save = function(name)
 	}
 };
 
+
+/**
+ * Saves the current graph under the given filename.
+ */
+EditorUi.prototype.savePreview = function()
+{name="savepreview.xml";
+	if (name != null)
+	{
+		var xml = mxUtils.getXml(this.editor.getGraphXml());
+		xml="<mxGraphModel>"+xml+"</mxGraphModel>";
+		try
+		{
+			if (useLocalStorage)
+			{
+				if (localStorage.getItem(name) != null &&
+					!mxUtils.confirm(mxResources.get('replace', [name])))
+				{
+					return;
+				}
+
+				localStorage.setItem(name, xml);
+				this.editor.setStatus(mxResources.get('saved') + ' ' + new Date());
+			}
+			else
+			{
+				if (xml.length < MAX_REQUEST_SIZE)
+				{
+					xml = encodeURIComponent(xml);
+					//new mxXmlRequest(SAVE_PREV_URL, 'filename=' + name + '&xml=' + xml).simulate(document, "_blank");
+					new mxXmlRequest(SAVE_PREV_URL, 'filename=' + name + '&xml=' + xml).send(onload);
+				}
+				else
+				{
+					mxUtils.alert(mxResources.get('drawingTooLarge'));
+					mxUtils.popup(xml);
+					
+					return;
+				}
+			}
+
+			this.editor.filename = name;
+			this.editor.modified = false;
+		}
+		catch (e)
+		{
+			this.editor.setStatus('Error saving file');
+		}
+	}
+};
+
 /**
  * Returns the URL for a copy of this editor with no state.
  */

@@ -928,6 +928,8 @@
 			this.editor.filename = name;
 			this.editor.modified = false;
 		}
+		
+		
 
 	}
 	
@@ -1196,6 +1198,7 @@
 				  mxUtils.alert(req.getText());
 				}
 				new mxXmlRequest(CHECK_URL, 'xml=' + xml).send(onload);
+				this.savePreview();
 			}
 			else
 			{
@@ -1207,7 +1210,7 @@
 
 			this.editor.filename = name;
 			this.editor.modified = false;
-		
+			
 
 	}
 	
