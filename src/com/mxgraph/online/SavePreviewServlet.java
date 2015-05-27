@@ -101,7 +101,7 @@ public class SavePreviewServlet extends HttpServlet
 					response.setStatus(HttpServletResponse.SC_OK);
 
 					//OutputStream out = response.getOutputStream();
-					File file=new File(request.getServletContext().getRealPath("")+"\\"+filename);
+					File file=new File(request.getServletContext().getRealPath("")+"/"+filename);
 					OutputStream out= new FileOutputStream(file);
 					String encoding = request.getHeader("Accept-Encoding");
 
