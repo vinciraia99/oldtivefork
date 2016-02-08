@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><language name="EntityRelationship">
+    <token name="entity" ref="./symbols/Entity.xml" occurrences="&gt;=1">
+        <ap type="Exit" name="Border" ref="Border" connectNum="&gt;=0"/>
+        <ap type="T" name="BorderT" ref="Border" connectNum="&gt;=0"/>
+    </token>
+    <token name="bin_rel" ref="./symbols/Relation.xml" occurrences="&gt;=0">
+        <ap type="Enter" name="UpBR" ref="Up" connectNum="&lt;=1"/>
+        <ap type="Enter" name="DownBR" ref="Down" connectNum="&lt;=1"/>
+        <ap type="Enter" name="LeftBR" ref="Left" connectNum="&lt;=1"/>
+        <ap type="Enter" name="RightBR" ref="Right" connectNum="&lt;=1"/>
+        <ap type="Exit" name="BorderBR" ref="Border" connectNum="&gt;=0"/>
+        <localConstraint>(connectNum(UpBR) + connectNum(DownBR) + connectNum(LeftBR) + connectNum(RightBR)) == 2
+		</localConstraint>
+    </token>
+    <token name="tern_rel_down" ref="./symbols/Relation.xml" occurrences="&gt;=0">
+        <ap type="Enter" name="UpTR" ref="Up" connectNum="&lt;=1"/>
+        <ap type="Enter" name="DownTR" ref="Down" connectNum="&lt;=1"/>
+        <ap type="Enter" name="LeftTR" ref="Left" connectNum="&lt;=1"/>
+        <ap type="Enter" name="RightTR" ref="Right" connectNum="&lt;=1"/>
+        <ap type="Exit" name="BorderTR" ref="Border" connectNum="&gt;=0"/>
+        <localConstraint>(connectNum(UpTR) + connectNum(DownTR) + connectNum(LeftTR) + connectNum(RightTR)) == 3
+		</localConstraint>
+    </token>
+    <token name="attribute" ref="./symbols/Attribute.xml" occurrences="&gt;=1">
+        <ap type="Enter" name="BorderAtt" ref="Border" connectNum="==1"/>
+    </token>
+    <token name="key_attribute" ref="./symbols/KeyAttribute.xml" occurrences="&gt;=1">
+        <ap type="Enter" name="BorderKA" ref="Border" connectNum="==1"/>
+    </token>
+    <token name="mval_attribute" ref="./symbols/MultAttribute.xml" occurrences="&gt;=0">
+        <ap type="Enter" name="BorderMA" ref="Border" connectNum="==1"/>
+    </token>
+    <token name="elem_attribute" ref="./symbols/ElemAttribute.xml" occurrences="&gt;=0">
+        <ap type="Elem" name="BorderEA" ref="Border" connectNum="==1"/>
+    </token>
+    <token name="comp_attribute" ref="./symbols/Attribute.xml" occurrences="&gt;=0">
+        <ap type="Enter" name="BorderCA" ref="Border" connectNum="&gt;2"/>
+    </token>
+    <token name="generalization" ref="./symbols/Generalization.xml" occurrences="&gt;=1">
+        <ap type="Enter" name="InGen" ref="In" connectNum="&gt;1"/>
+        <ap type="T" name="OutGen" ref="Out" connectNum="==1"/>
+    </token>
+    <connector name="line1" ref="./connectors/Line.svg">
+        <cap type="Exit" name="ExitA" ref="P1:P2" connectNum="==1"/>
+        <cap type="Enter" name="EnterB" ref="P2:P1" connectNum="==1"/>
+    </connector>
+    <connector name="line2" ref="./connectors/Line.svg">
+        <cap type="Elem" name="ElemA" ref="P1:P2" connectNum="==1"/>
+        <cap type="Enter" name="EnterB" ref="P2:P1" connectNum="==1"/>
+    </connector>
+    <connector name="touch" ref="./connectors/Touch.svg">
+        <cap type="T" name="TouchA" ref="P1:P2" connectNum="==1"/>
+        <cap type="T" name="TouchB" ref="P1:P2" connectNum="==1"/>
+    </connector>
+    <constraint>connected</constraint>
+</language>

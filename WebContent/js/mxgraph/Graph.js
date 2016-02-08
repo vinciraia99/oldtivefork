@@ -271,8 +271,15 @@ Graph.prototype.getTooltipForCell = function(cell)
  */
 Graph.prototype.convertValueToString = function(cell)
 {
+	
+	
 	if (mxUtils.isNode(cell.value))
 	  {
+		
+		if (cell.value.getAttribute('label', '')!=null){
+			return cell.value.getAttribute('label', '');
+		}
+		
 		if(cell.vertex)
 			return "S_"+cell.id;
 		/*else if(cell.edge)
@@ -283,6 +290,9 @@ Graph.prototype.convertValueToString = function(cell)
 	  }
 	else if(cell.edge)
 	{
+		if (cell.value.length>0) {
+			return cell.value;
+		}
 		return "C_"+cell.id;
 	}
 	return mxGraph.prototype.convertValueToString.apply(this, arguments);
@@ -301,9 +311,46 @@ Graph.prototype.cellLabelChanged = function(cell, value, autoSize)
 	    elt.setAttribute('label', value);
 	    value = elt;
 	  }
-	
+		
 	mxGraph.prototype.cellLabelChanged.apply(this, arguments);
 };
+
+
+/*Graph.prototype.convertValueToString = function(cell)
+{
+	if (mxUtils.isNode(cell.value))
+	  {
+		if(cell.vertex)
+			return "S_"+cell.id;
+		/*else if(cell.edge)
+		{
+			return "C_"+cell.id;
+		}
+	    //return cell.getAttribute('label', '')
+	  }
+	else if(cell.edge)
+	{
+		return "C_"+cell.id;
+	}
+	return mxGraph.prototype.convertValueToString.apply(this, arguments);
+};
+
+/**
+ * Handles label changes for XML user objects.
+ */
+/*Graph.prototype.cellLabelChanged = function(cell, value, autoSize)
+{
+
+	if (mxUtils.isNode(cell.value))
+	  {
+	    // Clones the value for correct undo/redo
+	    var elt = cell.value.cloneNode(true);
+	    elt.setAttribute('label', value);
+	    value = elt;
+	  }
+	
+	mxGraph.prototype.cellLabelChanged.apply(this, arguments);
+};*/
 
 /**
  * Sets the link for the given cell.

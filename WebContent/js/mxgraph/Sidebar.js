@@ -916,6 +916,7 @@ Sidebar.prototype.createDropHandler = function(cells, allowSplit)
 {
 	return function(graph, evt, target, x, y)
 	{
+		// *FA* console.log("Drag");
 		if (graph.isEnabled())
 		{
 			cells = graph.getImportableCells(cells);
@@ -970,6 +971,7 @@ Sidebar.prototype.createDragPreview = function(width, height)
  */
 Sidebar.prototype.createDragSource = function(elt, dropHandler, preview)
 {
+	//  *FA*  console.log("booo");
 	var dragSource = mxUtils.makeDraggable(elt, this.editorUi.editor.graph, dropHandler,
 		preview, 0, 0, this.editorUi.editor.graph.autoscroll, true, true);
 
@@ -1087,6 +1089,7 @@ Sidebar.prototype.createEdgeTemplateFromCells = function(cells, width, height, t
 	var graph = this.editorUi.editor.graph;
 	mxEvent.addListener(elt, 'click', mxUtils.bind(this, function(evt)
 	{
+		// *FA* console.log("Click Arco");
 		if (this.installEdges)
 		{
 			graph.setDefaultEdge(cells[0]);

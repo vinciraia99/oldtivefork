@@ -5,6 +5,8 @@
 /**
  * Constructs a new graph editor
  */
+
+var testing = true;
 EditorUi = function(editor, container)
 {
 	this.editor = editor || new Editor();
@@ -60,7 +62,7 @@ EditorUi = function(editor, container)
 		this.footerContainer.onselectstart = textEditing;
 		this.footerContainer.onmousedown = textEditing;
 	}
-	
+
 	// And uses built-in context menu while editing
 	if (mxClient.IS_IE && (typeof(document.documentMode) === 'undefined' || document.documentMode < 9))
 	{
@@ -196,6 +198,7 @@ EditorUi.prototype.vsplitPosition = 190;
  */
 EditorUi.prototype.init = function()
 {
+	graphTest = this.editor.graph;
 	// Updates action states
 	this.addUndoListener();
 	this.addSelectionListener();
@@ -546,6 +549,10 @@ EditorUi.prototype.refresh = function()
 	
 	this.sidebarContainer.style.top = tmp + 'px';
 	this.sidebarContainer.style.width = effHsplitPosition + 'px';
+	
+	this.ridebarContainer.style.top = tmp + 'px';
+	this.ridebarContainer.style.width = (effHsplitPosition + 10) +'px'; //***
+	
 	this.outlineContainer.style.width = effHsplitPosition + 'px';
 	this.outlineContainer.style.height = effVsplitPosition + 'px';
 	this.outlineContainer.style.bottom = this.footerHeight + 'px';
@@ -585,12 +592,13 @@ EditorUi.prototype.createDivs = function()
 	this.menubarContainer = this.createDiv('geMenubarContainer');
 	this.toolbarContainer = this.createDiv('geToolbarContainer');
 	this.sidebarContainer = this.createDiv('geSidebarContainer');
+	this.ridebarContainer = this.createDiv('geSidebarContainer'); //***
 	this.outlineContainer = this.createDiv('geOutlineContainer');
 	this.diagramContainer = this.createDiv('geDiagramContainer');
 	this.footerContainer = this.createDiv('geFooterContainer');
 	this.hsplit = this.createDiv('geHsplit');
 	this.vsplit = this.createDiv('geVsplit');
-
+	
 	// Sets static style for containers
 	this.menubarContainer.style.top = '0px';
 	this.menubarContainer.style.left = '0px';
@@ -598,6 +606,13 @@ EditorUi.prototype.createDivs = function()
 	this.toolbarContainer.style.left = '0px';
 	this.toolbarContainer.style.right = '0px';
 	this.sidebarContainer.style.left = '0px';
+	//this.ridebarContainer.style.left = '212px'; //***
+	this.ridebarContainer.style.right = '20px'; //***
+	this.ridebarContainer.style.zIndex = '1000';//***
+	this.ridebarContainer.style.height = '490px';//***
+	this.ridebarContainer.style.background = 'whiteSmoke none repeat scroll 0';//***
+	this.ridebarContainer.style.border = '2px solid #e0e0e0';//***
+	//this.ridebarContainer.style.bottom = '0px'; //***
 	this.outlineContainer.style.left = '0px';
 	this.diagramContainer.style.right = '0px';
 	this.footerContainer.style.left = '0px';
@@ -623,6 +638,8 @@ EditorUi.prototype.createUi = function()
 	
 	// Creates the sidebar
 	this.sidebar = this.createSidebar(this.sidebarContainer);
+	
+	this.ridebar = this.createRidebar(this.ridebarContainer); //***
 
 	// Creates the footer
 	this.footerContainer.appendChild(this.createFooter());
@@ -643,12 +660,13 @@ EditorUi.prototype.createUi = function()
 	this.container.appendChild(this.menubarContainer);
 	this.container.appendChild(this.toolbarContainer);
 	this.container.appendChild(this.sidebarContainer);
+	this.container.appendChild(this.ridebarContainer); //***
 	this.container.appendChild(this.outlineContainer);
 	this.container.appendChild(this.diagramContainer);
 	this.container.appendChild(this.footerContainer);
 	this.container.appendChild(this.hsplit);
 	this.container.appendChild(this.vsplit);
-	
+		
 	// HSplit
 	this.addSplitHandler(this.hsplit, true, 0, mxUtils.bind(this, function(value)
 	{
@@ -704,6 +722,154 @@ EditorUi.prototype.createSidebar = function(container)
 	return new Sidebar(this, container);
 };
 
+var widthStyle = "185px";
+EditorUi.prototype.createRidebar = function(container) //***
+{
+	/*var html = 	'<div class="geToolbarContainer" style="left: 0px; right: 0px; top: 1px; height: 396px;"><div class="geToolbar">';
+		html +=		'<div class="geToolbar">';
+		html += 		'<a class="geLabel geDisabled" href="javascript:void(0);" tabindex="0" style="white-space: nowrap; overflow: hidden; width: 70px;">Console</a>'	    
+		html += 		'<a onclick="gatTest()" class="geButton" href="javascript:void(0);" tabindex="0" title="Testing">';
+	    html +=				'<div class="geSprite geSprite-testconsole"></div>';
+	    html +=			'</a>';
+	    html += 		'<a onclick="clearConsole()" class="geButton" href="javascript:void(0);" tabindex="0" title="Clear">';
+	    html +=				'<div class="geSprite geSprite-clearconsole"></div>';
+	    html +=			'</a>';
+	    html += 	'</div>';
+	
+	    html += '</div>';*/
+	
+	var html = "";
+	
+	html += '<div style="width: 210px;height: 480px;background: whiteSmoke none repeat scroll 0 0"  id="contenutoError">';
+
+	html += '<div style="width: 206px;height: 33px;">';
+	html +=		'<div class="geToolbar">';
+	html += 		'<a class="geLabel geDisabled" href="javascript:void(0);" tabindex="0" style="white-space: nowrap; overflow: hidden; width: 70px;">Console</a>'
+	
+	if (testing) {
+//		html += 		'<a onclick="gatTest()" class="geButton" href="javascript:void(0);" tabindex="0" title="Testing">';
+//		html +=				'<div class="geSprite geSprite-testconsole"></div>';
+//		html +=			'</a>';
+//		html += 		'<a onclick="clearConsole()" class="geButton" href="javascript:void(0);" tabindex="0" title="Clear">';
+//		html +=				'<div class="geSprite geSprite-clearconsole"></div>';
+//		html +=			'</a>';
+		html += 		'<a onclick="zoom()" class="geButton" href="javascript:void(0);" tabindex="0" title="Zoom">';
+		html +=				'<div class="geSprite geSprite-zoomiconin"></div>';
+		html +=			'</a>';
+		html += 		'<a onclick="zoomMeno()" class="geButton" href="javascript:void(0);" tabindex="0" title="Zoom">';
+		html +=				'<div class="geSprite geSprite-zoomiconout"></div>';
+		html +=			'</a>';
+	}
+	
+	html += 	'</div>';
+	html += '</div>';
+    html += 	'<div id="contenuto" style="width:'+ widthStyle +'"overflow: Auto;height: 447px;border-top: 1px solid #e5e5e5;">';
+    html += 	'</div>';
+    html += '</div>';
+    container.innerHTML = html; 
+};
+
+function clearBorderDiv(id){
+	var divTitolo = document.getElementById("T_"+id);
+	var divDescrizione = document.getElementById("D_"+id);
+	
+	if ((divTitolo!=null) && (divDescrizione!=null)) {
+		divTitolo.style = "margin-top: 5px;height: 20px; border: 1px solid #e9e9e9; background: #f9f9f9; padding: 1px; text-align: center; vertical-align: top;width:"+widthStyle;;
+		divDescrizione.style = "border: 1px solid #e9e9e9; background: white; padding: 1px;height: 80px;width:"+widthStyle;
+	}
+}
+
+function colorBorderDiv(id){
+	var divTitolo = document.getElementById("T_"+id);
+	var divDescrizione = document.getElementById("D_"+id);
+	
+	if ((divTitolo!=null) && (divDescrizione!=null)) {
+		divTitolo.style = "margin-top: 5px;height: 20px; border: 1px solid #d43f3a; background: #f9f9f9; padding: 1px; text-align: center; vertical-align: top; width:"+widthStyle;
+		divDescrizione.style = "border: 1px solid #d43f3a; background: white; padding: 1px;height: 80px;width:"+widthStyle;
+	}
+}
+
+function aggiungiTitolo(key) {
+		
+    var divContentuo = document.getElementById("contenuto");
+    var div = document.createElement('div');
+
+    div.style = "margin-top: 5px;height: 20px; border: 1px solid #e9e9e9; background: #f9f9f9; padding: 1px; text-align: center; vertical-align: top;";
+    div.id="T_"+key;
+    div.innerHTML=key;
+    divContentuo.appendChild(div);	
+}
+
+function aggiungiDescrizione(key,testo) {
+	
+    var divContentuo = document.getElementById("contenuto");
+    var div = document.createElement('div');
+    var textarea = document.createElement('textarea');
+    textarea.value = testo;
+    textarea.disabled = true;
+    textarea.style ="background:white;resize: none;border: 0px;height: 80px; width:"+widthStyle;
+  
+    div.id="D_"+key;
+    div.style = "border: 1px solid #e9e9e9; background: white; padding: 1px; height: 80px; width:"+widthStyle;
+  
+    div.appendChild(textarea);
+    divContentuo.appendChild(div);	
+}
+
+function clearConsole(){
+	
+	document.getElementById("contenuto").innerHTML="";
+}
+
+
+function zoomMeno(){
+	
+	document.getElementById("contenutoError").parentNode.style.width='214px';
+	document.getElementById("contenutoError").style.width='210px';
+	document.getElementById("contenuto").style.width='185px';
+	
+	var x = document.getElementsByTagName("textarea");
+	var i;
+	for (i = 0; i < x.length; i++) {
+	    x[i].style.width='185px';
+	}
+	widthStyle = "185px";
+	
+	var y = document.getElementById("contenuto").childNodes;
+	var i;
+	for (i = 0; i < y.length; i++) {
+	    y[i].style.width='185px';
+	}
+	
+	
+}
+
+function zoom(){
+	
+	document.getElementById("contenutoError").parentNode.style.width='500px';
+	document.getElementById("contenutoError").style.width='480px';
+	document.getElementById("contenuto").style.width='470px';
+	
+	widthStyle = '460px';
+	var x = document.getElementsByTagName("textarea");
+	var i;
+	for (i = 0; i < x.length; i++) {
+	    x[i].style.width=widthStyle;
+	}
+	
+	var y = document.getElementById("contenuto").childNodes;
+	var i;
+	for (i = 0; i < y.length; i++) {
+		console.log(y[i])
+	    y[i].style.width=widthStyle;
+	}
+	
+}
+
+
+function gatTest(){
+	EditorUi.prototype.checkTesting(graphTest);
+}
 /**
  * Creates and returns a new footer.
  */
@@ -728,9 +894,10 @@ EditorUi.prototype.createDiv = function(classname)
  */
 EditorUi.prototype.addSplitHandler = function(elt, horizontal, dx, onChange)
 {
+	var graph = this.editor.graph;
 	var start = null;
 	var initial = null;
-	
+		
 	function getValue()
 	{
 		return parseInt(((horizontal) ? elt.style.left : elt.style.bottom));
@@ -748,9 +915,12 @@ EditorUi.prototype.addSplitHandler = function(elt, horizontal, dx, onChange)
 	
 	function dropHandler(evt)
 	{
+
+		EditorUi.prototype.interactiveAddUpdate(graph);
 		moveHandler(evt);
 		start = null;
 		initial = null;
+		
 	};
 	
 	mxEvent.addGestureListeners(elt, function(evt)
@@ -834,9 +1004,21 @@ EditorUi.prototype.saveFileInput = function(forceDialog)
 	}
 };
 
+EditorUi.prototype.interactiveAddUpdate = function(graph){
+	this.interactiveInputAddUpdate(graph);
+	this.completeInputAddUpdate(graph);
+}
+
+EditorUi.prototype.interactiveDelete = function(graph){
+	this.interactiveInputDelete(graph);
+}
+
 EditorUi.prototype.checkCorrectness = function(){
 	this.checkInput();
-	
+}
+
+EditorUi.prototype.checkTesting = function(graphTest){
+	this.test(graphTest);
 }
 
 /**
@@ -937,6 +1119,9 @@ EditorUi.prototype.createKeyHandler = function(editor)
 				if (action.enabled)
 				{
 					action.funct();
+					if (action.shortcut=="Delete"){
+						EditorUi.prototype.interactiveDelete(graph);
+					}
 				}
     		};
     		

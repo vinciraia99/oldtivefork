@@ -404,6 +404,7 @@ Menus.prototype.promptChange = function(menu, label, hint, defaultValue, key, pa
  */
 Menus.prototype.pickColor = function(key)
 {
+	console.log("Menu Color");
 	if (this.colorDialog == null)
 	{
 		this.colorDialog = new ColorDialog(this.editorUi);
@@ -414,11 +415,13 @@ Menus.prototype.pickColor = function(key)
 	var state = graph.getView().getState(graph.getSelectionCell());
 	var color = 'none';
 	
+	console.log("State " + state);
 	if (state != null)
 	{
 		color = state.style[key] || color;
 	}
 	
+	console.log("Color 1" + color);
 	if (color == 'none')
 	{
 		color = 'ffffff';
@@ -436,6 +439,7 @@ Menus.prototype.pickColor = function(key)
 	{
 		this.colorDialog.colorInput.focus();
 	}
+	console.log("Menu Color Fine");
 };
 
 /**

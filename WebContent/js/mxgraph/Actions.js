@@ -80,6 +80,8 @@ Actions.prototype.init = function()
 	this.addAction('xmlInput',function(){ui.saveFileInput(false);},null,null);
 	this.addAction('preview', function() { mxUtils.show(graph, null, 10, 10); });
 	this.addAction('check',function(){ui.checkCorrectness();},null,null);
+	// *FA* this.addAction('interactive',function(){ui.checkInteractive();},null,null);
+	
 	// Edit actions
 	this.addAction('undo', function() { editor.undoManager.undo(); }, null, 'sprite-undo', 'Ctrl+Z');
 	this.addAction('redo', function() { editor.undoManager.redo(); }, null, 'sprite-redo', 'Ctrl+Y');
@@ -455,7 +457,7 @@ Actions.prototype.init = function()
 	
 	// Color actions
 	this.addAction('fontColor', function() { ui.menus.pickColor(mxConstants.STYLE_FONTCOLOR); });
-	this.addAction('strokeColor', function() { ui.menus.pickColor(mxConstants.STYLE_STROKECOLOR); });
+	this.addAction('strokeColor', function() { console.log("Actions 1"); ui.menus.pickColor(mxConstants.STYLE_STROKECOLOR); });
 	this.addAction('fillColor', function() { ui.menus.pickColor(mxConstants.STYLE_FILLCOLOR); });
 	this.addAction('gradientColor', function() { ui.menus.pickColor(mxConstants.STYLE_GRADIENTCOLOR); });
 	this.addAction('backgroundColor', function() { ui.menus.pickColor(mxConstants.STYLE_LABEL_BACKGROUNDCOLOR); });

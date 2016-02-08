@@ -247,6 +247,10 @@
 }
 .geSprite-actualsize { background-position: 0 0; }
 .geSprite-check{ background-image: url("Check_mark.svg.png"); }
+.geSprite-clearconsole{ background-image: url("clear.png"); }
+.geSprite-testconsole{ background-image: url("test.png"); }
+.geSprite-zoomiconin{ background-image: url("zoom_in.png"); }
+.geSprite-zoomiconout{ background-image: url("zoom_out.png"); }
 .geSprite-bold { background-position: 0 -46px; }
 .geSprite-bottom { background-position: 0 -92px; }
 .geSprite-center { background-position: 0 -138px; }

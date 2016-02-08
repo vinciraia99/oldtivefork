@@ -86,8 +86,9 @@ Toolbar.prototype.init = function()
 	}));
 	this.addItems(['-', 'strokeColor', 'image', 'fillColor']);
 	this.addItem('geSprite-gradientcolor', 'gradientColor').setAttribute('title', mxResources.get('gradient'));
-	this.addItems(['shadow']);
+	this.addItems(['shadow'])
 	this.addItems(['check']);
+	// *FA* this.addItems(['interactive']);
 	
 	var graph = this.editorUi.editor.graph;
 
@@ -115,7 +116,7 @@ Toolbar.prototype.init = function()
 	
     graph.getSelectionModel().addListener(mxEvent.CHANGE, update);
     graph.getModel().addListener(mxEvent.CHANGE, update);
-	
+    
 	// Updates button states
     this.addEdgeSelectionHandler([line, linestart, lineend]);
 	this.addSelectionHandler([align]);

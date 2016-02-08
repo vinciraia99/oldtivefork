@@ -2,6 +2,8 @@ package com.mxgraph.online;
 
 
 import it.unisa.di.weblab.localcontext.Tester;
+import it.unisa.di.weblab.localcontext.Tester.Result;
+import it.unisa.di.weblab.localcontext.interactive.TesterInteractive;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -10,6 +12,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 
@@ -21,6 +26,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.labs.repackaged.org.json.JSONArray;
+import com.google.appengine.labs.repackaged.org.json.JSONException;
+import com.google.appengine.labs.repackaged.org.json.JSONObject;
 import com.mxgraph.util.mxBase64;
 
 public class CheckCorrectnessServlet extends HttpServlet {
@@ -84,11 +92,49 @@ public class CheckCorrectnessServlet extends HttpServlet {
 					String s = context.getRealPath(File.separator); 
 					
 					
-					PrintWriter out = response.getWriter();
+					//PrintWriter out = response.getWriter();
 					ByteArrayInputStream input = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8));
+					Result res=Tester.run(input, new FileInputStream(new File(s+"defaultDefinition.xml")));	
 					
-					String output = Tester.run(input, new FileInputStream(new File(s+"defaultDefinition.xml"))).description;
-					out.print(output);
+					HashMap<String, ArrayList<String>> problems = res.getResultSelfCheck();
+					ArrayList<String> problemsGlobal = res.getResultGlobalCheck();
+					
+					try {
+						JSONObject json      = new JSONObject();
+						JSONArray  arrayobj = new JSONArray();
+						
+						if (!problemsGlobal.isEmpty()) {
+							problems.put("Global Constraints", problemsGlobal);
+						} else if (problems.containsKey("Global Constraints")) {
+							problems.remove("Global Constraints");
+						}
+						
+						if(problems.size()!=0) {
+							JSONObject obj;
+							String result = "";
+							for(Map.Entry<String,ArrayList<String>> entry:problems.entrySet()) {
+							
+								obj = new JSONObject();
+								obj.put("Key", entry.getKey());
+								result = "";
+
+								for(int i=0;i<entry.getValue().size();i++) {
+									result = result+entry.getValue().get(i)+"\n";
+								}
+								obj.put("Error", result);
+								arrayobj.put(obj);
+							}
+						}
+					
+						json.put("Result", arrayobj);
+					
+						response.setContentType("application/json");
+						response.getWriter().print(json.toString());
+					
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 				}
 			}
 			 catch (IllegalArgumentException e) 

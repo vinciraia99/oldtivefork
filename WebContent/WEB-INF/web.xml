@@ -28,6 +28,22 @@
     <servlet-name>CheckCorrectnessServlet</servlet-name>
     <url-pattern>/CheckCorrectnessServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>InteractiveCorrectnessServlet</display-name>
+    <servlet-name>InteractiveCorrectnessServlet</servlet-name>
+    <servlet-class>com.mxgraph.online.InteractiveCorrectnessServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InteractiveCorrectnessServlet</servlet-name>
+    <url-pattern>/interactive</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InteractiveCorrectnessServlet</servlet-name>
+    <url-pattern>/InteractiveCorrectnessServlet</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>SaveServlet</display-name>
