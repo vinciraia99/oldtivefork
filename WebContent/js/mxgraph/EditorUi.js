@@ -804,15 +804,24 @@ function aggiungiDescrizione(key,testo) {
 	
     var divContentuo = document.getElementById("contenuto");
     var div = document.createElement('div');
-    var textarea = document.createElement('textarea');
-    textarea.value = testo;
-    textarea.disabled = true;
-    textarea.style ="background:white;resize: none;border: 0px;height: 80px; width:"+widthStyle;
+    
+    
+    div.innerHTML=testo.replace(/\n/g, "<br />");
+    
+//    var textarea = document.createElement('textarea');
+//    textarea.value = testo;
+//    textarea.disabled = true;
+//    textarea.style ="background:white;resize: none;border: 0px;height: 80px; width:"+widthStyle;
   
+    var height = "height: 80px;";
+    if (key.toLowerCase() == "Result".toLowerCase()){
+    	height = "height: 410px;";
+    }
+    
     div.id="D_"+key;
-    div.style = "border: 1px solid #e9e9e9; background: white; padding: 1px; height: 80px; width:"+widthStyle;
+    div.style = "overflow: Auto;border: 1px solid #e9e9e9; background: white; padding: 1px; "+height+"width:"+widthStyle;
   
-    div.appendChild(textarea);
+    //div.appendChild(textarea);
     divContentuo.appendChild(div);	
 }
 
@@ -860,7 +869,7 @@ function zoom(){
 	var y = document.getElementById("contenuto").childNodes;
 	var i;
 	for (i = 0; i < y.length; i++) {
-		console.log(y[i])
+		//console.log(y[i])
 	    y[i].style.width=widthStyle;
 	}
 	

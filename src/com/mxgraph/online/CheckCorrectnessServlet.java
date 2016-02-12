@@ -4,6 +4,8 @@ package com.mxgraph.online;
 import it.unisa.di.weblab.localcontext.Tester;
 import it.unisa.di.weblab.localcontext.Tester.Result;
 import it.unisa.di.weblab.localcontext.interactive.TesterInteractive;
+import it.unisa.di.weblab.localcontext.semantic.TesterSemantic;
+import it.unisa.di.weblab.localcontext.semantic.TesterSemantic.ResultSemantic;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -96,18 +98,29 @@ public class CheckCorrectnessServlet extends HttpServlet {
 					ByteArrayInputStream input = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8));
 					Result res=Tester.run(input, new FileInputStream(new File(s+"defaultDefinition.xml")));	
 					
-					HashMap<String, ArrayList<String>> problems = res.getResultSelfCheck();
-					ArrayList<String> problemsGlobal = res.getResultGlobalCheck();
+					HashMap<String, ArrayList<String>> problems;
+					
+					if (!res.isError()) {
+						ResultSemantic resSem = TesterSemantic.runSem(new FileInputStream(new File(s+"defaultDefinitionSemantic.xml")),res);
+						problems = resSem.getProblems();
+						if (!resSem.isError()){	
+							ArrayList<String> l = new ArrayList<String>();
+							l.add(resSem.getGraphSemantic().getResult());
+							problems.put("Result", l);
+						}
+						
+					} else {
+						problems = res.getResultSelfCheck();
+						ArrayList<String> problemsGlobal = res.getResultGlobalCheck();
+						
+						if (!problemsGlobal.isEmpty()) {
+							problems.put("Global Constraints", problemsGlobal);
+						}
+					}
 					
 					try {
 						JSONObject json      = new JSONObject();
 						JSONArray  arrayobj = new JSONArray();
-						
-						if (!problemsGlobal.isEmpty()) {
-							problems.put("Global Constraints", problemsGlobal);
-						} else if (problems.containsKey("Global Constraints")) {
-							problems.remove("Global Constraints");
-						}
 						
 						if(problems.size()!=0) {
 							JSONObject obj;

@@ -293,7 +293,8 @@ Graph.prototype.convertValueToString = function(cell)
 		if (cell.value.length>0) {
 			return cell.value;
 		}
-		return "C_"+cell.id;
+		//return "C_"+cell.id;
+		return "";
 	}
 	return mxGraph.prototype.convertValueToString.apply(this, arguments);
 };

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="EntityRelationship">
+
+	<semantic ref="entity">
+		<text graphicRef="Center" name="Testo" type="string"/>
+		<property name="Nome" type="string" condition="">
+			<function name="assign" path="" param="@Testo"/>
+		</property>
+		<property name="Key" type="list(string)" condition="size($Key)>'0'">
+			<function name="add" path="/line1/key_attribute" param="@Testo"/>
+			<function name="add" path="/line1/generalization/touch/entity" param="$Key"/>		
+		</property>
+		<property name="Attribute" type="list(string)" condition="">
+			<function name="add" path="/line1/attribute" param="@Testo"/>
+			<function name="add" path="/line1/comp_attribute/line2/elem_attribute" param="@Testo"/>
+			<function name="add" path="/line1[@Tipo='\(([01],1)\)']/bin_rel" param="$Attribute"/>
+			<function name="add" path="/line1/generalization/touch/entity" param="$Attribute"/>
+		</property>
+		<property name="Rif" type="list(string)" condition="">
+			<function name="add" path="/line1[@Tipo='\(([01],1)\)']/bin_rel/line1[@Tipo='\(([01],N)\)']/entity" param="$Key"/>
+			<function name="add" path="/line1/generalization/touch/entity" param="$Rif"/>
+		</property>
+		<property name="Printed" type="list(string)" condition="">
+			<function name="exist" path="/touch/" param=""/>
+		</property>
+		<property>
+			<function name="print" path="[$Printed='false']" param="&lt;b&gt;{$Nome}&lt;/b&gt; (&lt;u&gt;{$Key}&lt;/u&gt;{if([size($Attribute)>'0'],', ','')}&lt;i&gt;{$Attribute}&lt;/i&gt;{if([size($Rif)>'0'],', ','')}{$Rif})"/>
+		</property>
+	</semantic>
+	
+	<semantic ref="mval_attribute">
+		<text graphicRef="Center" name="Testo" type="string"/>
+		<property name="Nome" type="string" condition="">
+			<function name="assign" path="" param="@Testo"/>
+		</property>
+		<property name="Key" type="list(string)" condition="size($Key)>'0'">
+			<function name="add" path="" param="@Testo"/>
+			<function name="add" path="/line1/entity" param="$Key"/>
+		</property>
+		<property>
+			<function name="print" path="" param="&lt;b&gt;{$Nome}&lt;/b&gt; (&lt;u&gt;{$Key}&lt;/u&gt;)"/>
+		</property>
+	</semantic>
+	
+	<semantic ref="bin_rel">
+		<text graphicRef="Center" name="Testo" type="string"/>
+		<property name="Nome" type="string" condition="">
+			<function name="assign" path="" param="@Testo"/>
+		</property>
+		<property name="Key" type="list(string)" condition="">
+			<function name="add" path="/line1[@Tipo='\(([01],N)\)']/entity" param="$Key"/>		
+		</property>
+		<property name="Attribute" type="list(string)" condition="">
+			<function name="add" path="/line1/attribute" param="@Testo"/>
+		</property>
+		<property name="Count" type="list(string)" condition="">
+			<function name="add" path="/line1[@Tipo='\(([01],N)\)']/entity" param=""/>
+		</property>
+		<property>
+			<function name="print" path="[size($Count)='2']" param="&lt;b&gt;{$Nome}&lt;/b&gt; (&lt;u&gt;{$Key}&lt;/u&gt;{if([size($Attribute)>'0'],', ','')}&lt;i&gt;{$Attribute}&lt;/i&gt;)"/>			
+		</property>
+	</semantic>
+	
+	<semantic ref="key_attribute">
+		<text graphicRef="Center" name="Testo" type="string"/>
+	</semantic>
+	
+	<semantic ref="attribute">
+		<text graphicRef="Center" name="Testo" type="string"/>
+	</semantic>
+	
+	<semantic ref="elem_attribute">
+		<text graphicRef="Center" name="Testo" type="string"/>
+	</semantic>
+	
+	<semantic ref="comp_attribute">
+		<text graphicRef="Center" name="Testo" type="string"/>
+	</semantic>
+	
+	<semantic ref="line1">
+		<text graphicRef="Center" name="Tipo" type="([(][01],[1N][)])?"/>
+	</semantic>
+	
+	<semantic ref="generalization">
+		<text graphicRef="Center" name="Testo" type="string"/>
+	</semantic>
+	
+	<semantic ref="touch">
+		<text graphicRef="Center" name="Testo" type="string"/>
+	</semantic>
+</language>

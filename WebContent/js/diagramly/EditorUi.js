@@ -1036,7 +1036,7 @@
 		var lunRis = Object.keys(mappaRis).length; 
 				
 		if (lunRis > 0) {
-			console.log(Object.keys(mappaRis));
+			//console.log(Object.keys(mappaRis));
 			var styleColor; 
 			var modelRis = graph.getModel(); 
 			var idRis = "";
@@ -1207,7 +1207,7 @@
 			
 			appText = xmlDoc.createElement("aptext");
 			appText.setAttribute("graphicRef", "Center");
-			if (sym.getAttribute('label', '')!=null){
+			if ((sym.getAttribute('label', '')!=null) && (sym.getAttribute('label', '')!="")) {
 				appText.setAttribute("value", sym.getAttribute('label', ''));
 			} else {
 				appText.setAttribute("value", "S_" + sym.id);
