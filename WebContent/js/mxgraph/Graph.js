@@ -271,17 +271,22 @@ Graph.prototype.getTooltipForCell = function(cell)
  */
 Graph.prototype.convertValueToString = function(cell)
 {
-	
-	
+		
 	if (mxUtils.isNode(cell.value))
 	  {
 		
-		if (cell.value.getAttribute('label', '')!=null){
-			return cell.value.getAttribute('label', '');
-		}
+		var graphicRef = cell.value.attributes[1].nodeValue.toLowerCase();
 		
-		if(cell.vertex)
-			return "S_"+cell.id;
+//		console.log("|"+ghraphicRef+"|=|"+mappaRefSemantic[ghraphicRef]+"|");
+		
+		if (mappaRefSemantic[graphicRef] == undefined) {
+			return "";
+		} else if (cell.value.getAttribute('label', '')!=null){
+			return cell.value.getAttribute('label', '');
+		} else if(cell.vertex) {
+//			return "S_"+cell.id;
+			return TEXTDEFAULT;
+		}
 		/*else if(cell.edge)
 		{
 			return "C_"+cell.id;
@@ -290,14 +295,53 @@ Graph.prototype.convertValueToString = function(cell)
 	  }
 	else if(cell.edge)
 	{
-		if (cell.value.length>0) {
+		
+		var graphicRef = "";
+		var styleEdge = cell.style;
+				
+		var array1 = styleEdge.split(";");
+		if (array1.length > 1) {
+			var array2 = array1[1].split("graphicRef=");
+			if (array2.length > 1){
+				graphicRef = array2[1].toLowerCase();
+			}
+		}
+		
+		//console.log("|"+graphicRef+"|=|"+mappaRefSemantic[graphicRef]+"|");
+		
+		if (mappaRefSemantic[graphicRef] == undefined) {
+			return "";
+		} else if (cell.value.length>0) {
 			return cell.value;
+		} else {
+			return "";
 		}
 		//return "C_"+cell.id;
-		return "";
+		
 	}
 	return mxGraph.prototype.convertValueToString.apply(this, arguments);
 };
+
+//Graph.prototype.convertValueToString = function(cell)
+//{
+//		
+//	if (mxUtils.isNode(cell.value))
+//	  {
+//		
+//		if(cell.vertex) {
+//			return "S_"+cell.id;	
+//		} else if(cell.edge)
+//		{
+//			return "C_"+cell.id;
+//		}
+//	  }
+//	else if(cell.edge)
+//	{
+//		return "C_"+cell.id;
+//		
+//	}
+//	return mxGraph.prototype.convertValueToString.apply(this, arguments);
+//};
 
 /**
  * Handles label changes for XML user objects.

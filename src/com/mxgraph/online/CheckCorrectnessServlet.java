@@ -1,11 +1,14 @@
 package com.mxgraph.online;
 
 
+import it.unisa.di.weblab.localcontext.ParserXML;
+import it.unisa.di.weblab.localcontext.ParserXMLDefinition;
 import it.unisa.di.weblab.localcontext.Tester;
 import it.unisa.di.weblab.localcontext.Tester.Result;
 import it.unisa.di.weblab.localcontext.interactive.TesterInteractive;
 import it.unisa.di.weblab.localcontext.semantic.TesterSemantic;
 import it.unisa.di.weblab.localcontext.semantic.TesterSemantic.ResultSemantic;
+import it.unisa.di.weblab.localcontext.semantic.TextArea;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -67,7 +70,8 @@ public class CheckCorrectnessServlet extends HttpServlet {
 	}
 	
 	public static void handlePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CloneNotSupportedException, ScriptException  {
-		if (request.getContentLength() < Constants.MAX_REQUEST_SIZE) 
+		//if (request.getContentLength() < Constants.MAX_REQUEST_SIZE)
+		if (request.getContentLength() < 10485760)
 		{
 			long t0 = System.currentTimeMillis();
 			String enc = request.getParameter("data");
@@ -96,10 +100,10 @@ public class CheckCorrectnessServlet extends HttpServlet {
 					
 					//PrintWriter out = response.getWriter();
 					ByteArrayInputStream input = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8));
-					Result res=Tester.run(input, new FileInputStream(new File(s+"defaultDefinition.xml")));	
+					Result res=Tester.run(input, new FileInputStream(new File(s+"defaultDefinition.xml")));
+					HashMap<String, ArrayList<TextArea>> texts = res.getTexts();
 					
 					HashMap<String, ArrayList<String>> problems;
-					
 					if (!res.isError()) {
 						ResultSemantic resSem = TesterSemantic.runSem(new FileInputStream(new File(s+"defaultDefinitionSemantic.xml")),res);
 						problems = resSem.getProblems();
@@ -130,10 +134,17 @@ public class CheckCorrectnessServlet extends HttpServlet {
 								obj = new JSONObject();
 								obj.put("Key", entry.getKey());
 								result = "";
+								
+								String msg = entry.getKey();
+								if (texts.containsKey(entry.getKey())){
+									ArrayList<TextArea> txl = texts.get(entry.getKey());
+									msg = txl.get(0).getValue();
+								}
+								obj.put("Msg", msg);	
 
 								for(int i=0;i<entry.getValue().size();i++) {
 									result = result+entry.getValue().get(i)+"\n";
-								}
+								}															
 								obj.put("Error", result);
 								arrayobj.put(obj);
 							}

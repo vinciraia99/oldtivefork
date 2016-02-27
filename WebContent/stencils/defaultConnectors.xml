@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<connectors name="EntityRelationship">
-  <connector graphicRef="connectors/Line.svg">
-	<values code="content.appendChild(this.createEdgeTemplate('attP=P1:P2-P2:P1;graphicRef=connectors/Line.svg;edgeStyle=none;endArrow=none;', 100, 100, '', 'Line', true));" name="Line"/>
-</connector>
-  <connector graphicRef="connectors/DashedEmptyArrow.svg">
-	<values code="content.appendChild(this.createEdgeTemplate('attP=Tail-Head;graphicRef=connectors/DashedEmptyArrow.svg;edgeStyle=none;endArrow=block;html=1;endFill=0;endSize=6;dashed=1', 100, 100, '', 'DashedEmptyArrow', true));" name="DashedEmptyArrow"/>
+<connectors name="FlowChart">
+ <!--  <connector graphicRef="connectors/SegmentedArrow.svg">
+	<values code="content.appendChild(this.createEdgeTemplate('attP=Tail-Head;graphicRef=connectors/SegmentedArrow.svg;edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;endFill=0;', 100, 100, '', 'SegmentedArrow', true));" name="SegmentedArrow"/>
+</connector>-->
+  <connector graphicRef="connectors/Arrow.svg">
+	<values code="content.appendChild(this.createEdgeTemplate('attP=Tail-Head;graphicRef=connectors/Arrow.svg;edgeStyle=none;endArrow=block;html=1;endFill=0;', 100, 100, '', 'Arrow', true));" name="Arrow"/>
 </connector>
 </connectors>

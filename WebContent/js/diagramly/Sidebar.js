@@ -92,13 +92,72 @@
         var response = xhttp.responseXML; 
         //console.log(xhttp.responseXML);
         var languageName = response.documentElement.getAttribute("name");
-		this.addCustomStencilPalette(languageName,languageName,dir+'/defaultStencil.xml',';fillColor=#ffffff;strokeColor=#000000;strokeWidth=2',dir+'/defaultConnectors.xml');
+//        console.log("------------");
+//        console.log(response);
+        
+        var mappaNameRef= new Object();
+		var root = response.documentElement
+		var child = root.firstChild;
+		while (child != null)
+		{
+			if (child.nodeType == mxConstants.NODETYPE_ELEMENT)	{
+				var ref = child.getAttribute('ref');
+				var name = child.getAttribute('name');
+				if (ref!=null) {
+					ref = ref.toLowerCase();
+					name = name.toLowerCase();
+					if (mappaNameRef[ref]==undefined){
+						mappaNameRef[ref]=name;
+//						console.log("|"+ref+"| = |"+name+"|");
+					}
+					mappaNameSemantic[name]=ref;
+				}
+			}
+			child = child.nextSibling;
+		}
+		
+		if (window.XMLHttpRequest)
+        {
+            xhttp2=new XMLHttpRequest();
+        }
+        else
+        {
+            xhttp2=new ActiveXObject("Microsoft.XMLDOM");
+        }
+		
+        xhttp2.open("GET",'./defaultDefinitionSemantic.xml',false);
+        xhttp2.send();
+        var responseSemantic = xhttp2.responseXML;
+		var rootSemantic = responseSemantic.documentElement
+		var childSemantic = rootSemantic.firstChild;
+		while (childSemantic != null)
+		{
+			if (childSemantic.nodeType == mxConstants.NODETYPE_ELEMENT)	{
+				var refKey = childSemantic.getAttribute('ref');
+				if (refKey!=null) {
+					refKey = refKey.toLowerCase();
+					if (mappaNameSemantic[refKey]!=undefined){
+						var childsText = childSemantic.getElementsByTagName("text");
+						if (childsText.length > 0) {
+							var valueKeyString = mappaNameSemantic[refKey];
+							mappaRefSemantic[valueKeyString] = "true";
+						}
+					}
+				}
+			}
+			childSemantic = childSemantic.nextSibling;
+		}
+        
+//		console.log(mappaNameRef);
+//		console.log(mappaRefSemantic); 
+		this.addCustomStencilPalette(languageName,languageName,dir+'/defaultStencil.xml',';fillColor=#ffffff;strokeColor=#000000;strokeWidth=2',dir+'/defaultConnectors.xml',mappaNameRef);
 		/*this.addCustomStencilPalette('EntityRelationship', 'ER', dir + '/EntityRelationshipStencil.xml',
 		';fillColor=#ffffff;strokeColor=#000000;strokeWidth=2',dir+'/EntityRelationshipConnectors.xml');
 		this.addCustomStencilPalette('UseCaseDiagram', 'Ucd', dir + '/UseCaseDiagramStencil.xml',
 				';fillColor=#ffffff;strokeColor=#000000;strokeWidth=2',dir+'/UseCaseDiagramConnectors.xml'); 
 		this.addCustomStencilPalette('ClassDiagram', 'CD', dir + '/ClassDiagramStencil.xml',
-				';fillColor=#ffffff;strokeColor=#000000;strokeWidth=2',dir+'/ClassDiagramConnectors.xml');*/ 
+				';fillColor=#ffffff;strokeColor=#000000;strokeWidth=2',dir+'/ClassDiagramConnectors.xml');*/
+		
 		this.addMoreShapes();
 		/*this.addImagePalette('computer', 'Clipart / Computer', imgDir
 				+ '/lib/clip_art/computers/', '_128x128.png', [ 'Antivirus',

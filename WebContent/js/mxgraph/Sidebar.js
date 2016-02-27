@@ -1291,7 +1291,7 @@ Sidebar.prototype.addStencilPalette = function(id, title, stencilFile, style, ig
 };
 
 
-Sidebar.prototype.addCustomStencilPalette = function(id, title, stencilFile, style,connectorsFile, ignore, onInit, scale)
+Sidebar.prototype.addCustomStencilPalette = function(id, title, stencilFile, style,connectorsFile, map, ignore, onInit, scale)
 {
 	scale = (scale != null) ? scale : 1;
 	
@@ -1331,13 +1331,22 @@ Sidebar.prototype.addCustomStencilPalette = function(id, title, stencilFile, sty
 				var person1 = v.createElement("Person");
 				person1.setAttrimbute("firstName", "Daffy");
 				person1.setAttribute("lastName", "Duck");*/
-				
+								
 				shape.removeChild(shape.getElementsByTagName("background")[0]);
 				shape.removeChild(shape.getElementsByTagName("foreground")[0]);
-				
+							
+				var nome = stencilName.replace(/_/g, ' ');
+				var graphicRef = shape.getAttribute("graphicRef");
+				if (graphicRef!=null) {
+					graphicRef = graphicRef.toLowerCase();
+					if (map[graphicRef]!=undefined) {
+						var stringa = map[graphicRef].replace(/_/g, ' ');
+						nome = stringa.substr(0,1).toUpperCase()+stringa.substr(1);
+					}
+				}
 				
 				content.appendChild(this.createVertexTemplate('shape=' + packageName + stencilName.toLowerCase() + style,
-					Math.round(w * scale), Math.round(h * scale),shape, stencilName.replace(/_/g, ' '), true));
+					Math.round(w * scale), Math.round(h * scale),shape, nome, true));
 			}
 		}), true);
 		if (window.XMLHttpRequest)
@@ -1362,8 +1371,60 @@ Sidebar.prototype.addCustomStencilPalette = function(id, title, stencilFile, sty
         	//console.log(value.getAttribute("name"));
         	if(value.getAttribute("name") !="Touch")
         	{
+        		var pattern = new RegExp("[^content.appendChild\(this.createEdgeTemplate\(](.*)[^\)\);]");
+        		var stringaCode = value.getAttribute("code");
+        		var result = null;
+        		var newNome = "";
         		
-        		eval(value.getAttribute("code"));
+//        		console.log(map);
+//        		console.log("--");      		
+        		result = stringaCode.match(pattern);
+//        		console.log(value.getAttribute("name"));
+        		if (result.length > 0) {
+        			var array = result[0].split(",");
+        			if (array.length > 4) {
+        				var valueStr = array[4];
+            			var array1 = array[0].split(";");
+            			if (array1.length > 1) {
+            				var array2 = array1[1].split("graphicRef=");
+            				if (array2.length > 1){
+            					var graphicRef = array2[1];
+//            					console.log("graphicRef = |"+graphicRef+"|");
+//            					console.log("value = |"+valueStr+"|");
+//                				for (var j=0;j<array.length;j++){
+//            						console.log(array[j]);
+//            					}
+            					if (graphicRef!=null) {
+            						graphicRef = graphicRef.toLowerCase();
+            						if (map[graphicRef]!=undefined) {
+            							var stringa = map[graphicRef].replace(/_/g, ' ');
+            							newNome = stringa.substr(0,1).toUpperCase()+stringa.substr(1);
+            						}
+            					}
+//            					console.log("newNome: |"+newNome+"|");
+            				}
+            			}
+        			}      			
+        		}
+        		
+        		if (newNome.length > 0){
+        			var concat = "content.appendChild(this.createEdgeTemplate(";
+    				for (var j=0;j<array.length;j++){
+    					if (j==4){
+    						concat = concat + " '"+ newNome +"'";
+    					} else {
+    						concat = concat + array[j];
+    					}
+    					if (j!=(array.length-1)){
+    						concat = concat + ",";
+    					}
+					}
+        			concat = concat + "));";
+        			stringaCode = concat;
+//        			console.log(stringaCode);
+        		}
+        		
+        		eval(stringaCode);
         	}	
         }	
 	   

@@ -1,49 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="EntityRelationship">
-    <token name="entity" ref="symbols/General/Rectangle.xml" occurrences="&gt;=1">
-        <ap type="Exit" name="Border" ref="Border" connectNum="&gt;=0"/>
-        <ap type="T" name="BorderT" ref="Border" connectNum="&gt;=0"/>
+<language name="FlowChart">
+    <token name="END" ref="symbols/FlowchartBase/TriangleUp.xml" occurrences="==1">
+        <ap type="enter" name="IN" ref="Up" connectNum="&gt;=1"/>
     </token>
-    <token name="bin_rel" ref="symbols/General/Rumble.xml" occurrences="&gt;=0">
-        <ap type="Enter" name="UpBR" ref="Up" connectNum="&lt;=1"/>
-        <ap type="Enter" name="DownBR" ref="Down" connectNum="&lt;=1"/>
-        <ap type="Enter" name="LeftBR" ref="Left" connectNum="&lt;=1"/>
-        <ap type="Enter" name="RightBR" ref="Right" connectNum="&lt;=1"/>
-        <ap type="Exit" name="BorderBR" ref="Border" connectNum="&gt;=0"/>
-        <localConstraint>(connectNum(UpBR) + connectNum(DownBR) + connectNum(LeftBR) + connectNum(RightBR)) == 2
-		</localConstraint>
+    <token name="IO" ref="symbols/FlowchartBase/Parallelogram.xml" occurrences="&gt;=0">
+        <ap type="enter" name="IN" ref="Up" connectNum="&gt;=1"/>
+        <ap type="exit" name="OUT" ref="Down" connectNum="==1"/>
     </token>
-    <token name="attribute" ref="symbols/General/Ellipse.xml" occurrences="&gt;=1">
-        <ap type="Enter" name="BorderAtt" ref="Border" connectNum="==1"/>
+    <token name="STAT" ref="symbols/FlowchartBase/Rectangle.xml" occurrences="&gt;=0">
+        <ap type="enter" name="IN" ref="Up" connectNum="&gt;=1"/>
+        <ap type="exit" name="OUT" ref="Down" connectNum="==1"/>
     </token>
-    <token name="key_attribute" ref="symbols/General/CircleLined.xml" occurrences="&gt;=1">
-        <ap type="Enter" name="BorderKA" ref="Border" connectNum="==1"/>
+    <token name="BEGIN" ref="symbols/FlowchartBase/TriangleDOWN.xml" occurrences="==1">
+        <ap type="exit" name="OUT" ref="Down" connectNum="==1"/>
     </token>
-    <token name="mval_attribute" ref="symbols/General/DoubleCircle.xml" occurrences="&gt;=0">
-        <ap type="Enter" name="BorderMA" ref="Border" connectNum="==1"/>
+    <token name="PRED" ref="symbols/FlowchartBase/Rumble.xml" occurrences="&gt;=0">
+        <ap type="enter" name="IN" ref="Up" connectNum="&gt;=1"/>
+        <ap type="exit" name="FOUT" ref="Left" connectNum="==1"/>
+        <ap type="exit" name="TOUT" ref="Right" connectNum="==1"/>
     </token>
-    <token name="elem_attribute" ref="symbols/General/Circle.xml" occurrences="&gt;=0">
-        <ap type="Elem" name="BorderEA" ref="Border" connectNum="==1"/>
-    </token>
-    <token name="comp_attribute" ref="symbols/General/Ellipse.xml" occurrences="&gt;=0">
-        <ap type="Enter" name="BorderCA" ref="Border" connectNum="==1"/>
-        <ap type="Exit" name="Border" ref="Border" connectNum="&gt;=2"/>
-    </token>
-    <token name="generalization" ref="symbols/General/ArrowUP.xml" occurrences="&gt;=0">
-        <ap type="Enter" name="InGen" ref="Up" connectNum="&gt;1"/>
-        <ap type="T" name="OutGen" ref="Down" connectNum="==1"/>
-    </token>
-    <connector name="line1" ref="connectors/Line.svg">
-        <cap type="Exit" name="ExitA" ref="P1:P2" connectNum="==1"/>
-        <cap type="Enter" name="EnterB" ref="P2:P1" connectNum="==1"/>
-    </connector>
-    <connector name="line2" ref="connectors/Line.svg">
-        <cap type="Elem" name="ElemA" ref="P1:P2" connectNum="==1"/>
-        <cap type="Exit" name="EnterB" ref="P2:P1" connectNum="==1"/>
-    </connector>
-    <connector name="touch" ref="connectors/DashedEmptyArrow.svg">
-        <cap type="T" name="TouchA" ref="Tail" connectNum="==1"/>
-        <cap type="T" name="TouchB" ref="Head" connectNum="==1"/>
+<!-- <connector name="ARROW" ref="connectors/SegmentedArrow.svg">
+        <cap type="exit" name="Tail" ref="Tail" connectNum="==1"/>
+        <cap type="enter" name="Head" ref="Head" connectNum="==1"/>
+    </connector>-->
+    <connector name="Arrow" ref="connectors/Arrow.svg">
+        <cap type="exit" name="Tail" ref="Tail" connectNum="==1"/>
+        <cap type="enter" name="Head" ref="Head" connectNum="==1"/>
     </connector>
     <constraint>Connected</constraint>
 </language>

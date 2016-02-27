@@ -797,7 +797,9 @@ Editor.prototype.createUndoManager = function()
 Editor.prototype.initStencilRegistry = function()
 {
 	// Loads default stencils
+	//mxStencilRegistry.loadDefaultDefinition('defaultDefinition.xml');
 	mxStencilRegistry.loadStencilSet(STENCIL_PATH + '/defaultStencil.xml');
+	
 };
 
 /**
@@ -898,6 +900,48 @@ Editor.prototype.initStencilRegistry = function()
 
 		return tmp;
 	};
+	
+//	var mappaNameRef= new Object();
+//	mxStencilRegistry.loadDefaultDefinition = function(defaultDefinitionFile, postStencilLoad, force)
+//	{
+//		force = (force != null) ? force : false;
+//		
+//		// Uses additional cache for detecting previous load attempts
+//		var xmlDoc = mxStencilRegistry.packages[defaultDefinitionFile];
+//		
+//		if (force || xmlDoc == null)
+//		{
+//			var install = false;
+//			
+//			if (xmlDoc == null)
+//			{
+//				var req = mxUtils.load(defaultDefinitionFile);
+//				xmlDoc = req.getXml();
+//				
+//				mxStencilRegistry.packages[defaultDefinitionFile] = xmlDoc;
+//				install = true;
+//			}
+//		
+//			var root = xmlDoc.documentElement;
+//			
+//			var child = root.firstChild;
+//			while (child != null)
+//			{
+//				if (child.nodeType == mxConstants.NODETYPE_ELEMENT)	{
+//					var ref = child.getAttribute('ref');
+//					var name = child.getAttribute('name');
+//					if ((ref!=null) && (mappaNameRef[ref]==undefined)){
+//						mappaNameRef[ref]=name;
+//						console.log("|"+ref+"| = |"+name+"|");
+//					}
+//				}
+//				child = child.nextSibling;
+//			}
+//			
+//
+//			
+//		}
+//	};
 
 	// Loads the given stencil set
 	mxStencilRegistry.loadStencilSet = function(stencilFile, postStencilLoad, force)
@@ -928,6 +972,7 @@ Editor.prototype.initStencilRegistry = function()
 	// Parses the given stencil set
 	mxStencilRegistry.parseStencilSet = function(xmlDocument, postStencilLoad, install)
 	{
+		
 		install = (install != null) ? install : true;
 		var root = xmlDocument.documentElement;
 		shape = root.firstChild;
@@ -949,7 +994,7 @@ Editor.prototype.initStencilRegistry = function()
 				{
 					packageName = packageName.toLowerCase();
 					var stencilName = name.replace(/ /g,"_");
-						
+										
 					if (install)
 					{
 						mxStencilRegistry.addStencil(packageName + stencilName.toLowerCase(), new mxStencil(shape));

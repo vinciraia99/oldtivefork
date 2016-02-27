@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<shapes name="EntityRelationship">
-  <shape aspect="variable" graphicRef="symbols/General/Rectangle.xml" h="60" name="Rectangle" strokewidth="inherit" w="98">
+<shapes name="FlowChart">
+  <shape aspect="variable" graphicRef="symbols/FlowchartBase/TriangleUp.xml" h="61.03" name="TriangleUp" strokewidth="inherit" w="95.34">
+<connections>
+<constraint name="Up" perimeter="0" x="0.5" y="0"/>
+</connections>
+<background>
+<path>
+<move x="3.64" y="61.02"/>
+<line x="91.64" y="61.02"/>
+<arc large-arc-flag="0" rx="6" ry="4" sweep-flag="0" x="94.64" x-axis-rotation="30" y="56.02"/>
+<line x="49.64" y="1.02"/>
+<arc large-arc-flag="0" rx="3" ry="3" sweep-flag="0" x="45.64" x-axis-rotation="0" y="1.02"/>
+<line x="0.64" y="56.02"/>
+<arc large-arc-flag="0" rx="6" ry="4" sweep-flag="0" x="3.64" x-axis-rotation="-35" y="61.02"/>
+<close/>
+</path>
+</background>
+<foreground>
+<fillstroke/>
+</foreground>
+</shape>
+  <shape aspect="variable" graphicRef="symbols/FlowchartBase/Parallelogram.xml" h="60.24" name="Parallelogram" strokewidth="inherit" w="98.77">
+<connections>
+<constraint name="Up" perimeter="0" x="0.5" y="0"/>
+<constraint name="Down" perimeter="0" x="0.5" y="1"/>
+</connections>
+<background>
+<path>
+<move x="19.37" y="5.12"/>
+<arc large-arc-flag="0" rx="2.5" ry="5" sweep-flag="1" x="24.37" x-axis-rotation="30" y="0.12"/>
+<line x="93.37" y="0.12"/>
+<arc large-arc-flag="0" rx="5" ry="4" sweep-flag="1" x="98.37" x-axis-rotation="0" y="5.12"/>
+<line x="79.37" y="55.12"/>
+<arc large-arc-flag="0" rx="2.5" ry="5" sweep-flag="1" x="74.37" x-axis-rotation="30" y="60.12"/>
+<line x="4.37" y="60.12"/>
+<arc large-arc-flag="0" rx="5" ry="4" sweep-flag="1" x="0.37" x-axis-rotation="0" y="55.12"/>
+<close/>
+</path>
+</background>
+<foreground>
+<fillstroke/>
+</foreground>
+</shape>
+  <shape aspect="variable" graphicRef="symbols/FlowchartBase/Rectangle.xml" h="60" name="Rectangle" strokewidth="inherit" w="98">
 	<connections>
-		<constraint name="Border" perimeter="0" x="0.5" y="0"/>
-		<constraint name="Border" perimeter="0" x="0.25" y="0"/>
-		<constraint name="Border" perimeter="0" x="0.75" y="0"/>
-		<constraint name="Border" perimeter="0" x="0.5" y="1"/>
-		<constraint name="Border" perimeter="0" x="0.25" y="1"/>
-		<constraint name="Border" perimeter="0" x="0.75" y="1"/>
-		<constraint name="Border" perimeter="0" x="0" y="0.25"/>
-		<constraint name="Border" perimeter="0" x="0" y="0.75"/>
-		<constraint name="Border" perimeter="0" x="0" y="0.5"/>
-		<constraint name="Border" perimeter="0" x="1" y="0.5"/>
-		<constraint name="Border" perimeter="0" x="1" y="0.25"/>
-		<constraint name="Border" perimeter="0" x="1" y="0.75"/>
+		<constraint name="Up" perimeter="0" x="0.5" y="0"/>
+		<constraint name="Down" perimeter="0" x="0.5" y="1"/>
 	</connections>
 	<background>
 		<rect h="60" w="98" x="0" y="0"/>
@@ -22,16 +54,31 @@
 		<fillstroke/>
 	</foreground>
 </shape>
-  <shape aspect="variable" graphicRef="symbols/General/Rumble.xml" h="57.43" name="Rumble" strokewidth="inherit" w="98">
+  <shape aspect="variable" graphicRef="symbols/FlowchartBase/TriangleDOWN.xml" h="61.03" name="TriangleDOWN" strokewidth="inherit" w="95.34">
+<connections>
+<constraint name="Down" perimeter="0" x="0.5" y="1"/>
+</connections>
+<background>
+<path>
+<move x="3.64" y="0.01"/>
+<line x="91.64" y="0.01"/>
+<arc large-arc-flag="0" rx="6" ry="4" sweep-flag="1" x="94.64" x-axis-rotation="-30" y="5.01"/>
+<line x="49.64" y="60.01"/>
+<arc large-arc-flag="0" rx="3" ry="3" sweep-flag="1" x="45.64" x-axis-rotation="0" y="60.01"/>
+<line x="0.64" y="5.01"/>
+<arc large-arc-flag="0" rx="6" ry="4" sweep-flag="1" x="3.64" x-axis-rotation="35" y="0.01"/>
+<close/>
+</path>
+</background>
+<foreground>
+<fillstroke/>
+</foreground>
+</shape>
+  <shape aspect="variable" graphicRef="symbols/FlowchartBase/Rumble.xml" h="57.43" name="Rumble" strokewidth="inherit" w="98">
 <connections>
 <constraint name="Up" perimeter="0" x="0.5" y="0"/>
-<constraint name="Down" perimeter="0" x="0.5" y="1"/>
 <constraint name="Left" perimeter="0" x="0" y="0.5"/>
 <constraint name="Right" perimeter="0" x="1" y="0.5"/>
-<constraint name="Border" perimeter="0" x="0.25" y="0.25"/>
-<constraint name="Border" perimeter="0" x="0.25" y="0.75"/>
-<constraint name="Border" perimeter="0" x="0.75" y="0.75"/>
-<constraint name="Border" perimeter="0" x="0.75" y="0.25"/>
 </connections>
 <background>
 <path>
@@ -44,107 +91,6 @@
 
 <line x="47" y="0.71"/>
 
-<close/>
-</path>
-</background>
-<foreground>
-<fillstroke/>
-</foreground>
-</shape>
-  <shape aspect="variable" graphicRef="symbols/General/Ellipse.xml" h="60" name="Ellipse" strokewidth="inherit" w="99">
-	<connections>
-		<constraint name="Border" perimeter="0" x="0.5" y="0"/>
-		<constraint name="Border" perimeter="0" x="0.5" y="1"/>
-		<constraint name="Border" perimeter="0" x="0" y="0.5"/>
-		<constraint name="Border" perimeter="0" x="1" y="0.5"/>
-		<constraint name="Border" perimeter="0" x="0.145" y="0.145"/>
-		<constraint name="Border" perimeter="0" x="0.145" y="0.855"/>
-		<constraint name="Border" perimeter="0" x="0.855" y="0.145"/>
-		<constraint name="Border" perimeter="0" x="0.855" y="0.855"/>
-	</connections>
-	<background>
-		<ellipse h="60" w="99" x="0" y="0"/>
-	</background>
-	<foreground>
-		<fillstroke/>
-	</foreground>
-</shape>
-  <shape aspect="variable" graphicRef="symbols/General/CircleLined.xml" h="60" name="CircleLined" strokewidth="inherit" w="99">
-<connections>
-<constraint name="Border" perimeter="0" x="0.5" y="0"/>
-<constraint name="Border" perimeter="0" x="0.5" y="1"/>
-<constraint name="Border" perimeter="0" x="0" y="0.5"/>
-<constraint name="Border" perimeter="0" x="1" y="0.5"/>
-<constraint name="Border" perimeter="0" x="0.145" y="0.145"/>
-<constraint name="Border" perimeter="0" x="0.145" y="0.855"/>
-<constraint name="Border" perimeter="0" x="0.855" y="0.145"/>
-<constraint name="Border" perimeter="0" x="0.855" y="0.855"/>
-</connections>
-<background>
-<ellipse h="60" w="99" x="0" y="0"/>
-</background>
-<foreground>
-<fillstroke/>
-<path>
-<move x="25" y="45"/>
-<line x="75" y="45"/>
-<close/>
-</path>
-<fillstroke/>
-</foreground>
-</shape>
-  <shape aspect="fixed" graphicRef="symbols/General/DoubleCircle.xml" h="60" name="MultAttribute" strokewidth="inherit" w="99">
-<connections>
-<constraint name="Border" perimeter="0" x="0.5" y="0"/>
-<constraint name="Border" perimeter="0" x="0.5" y="1"/>
-<constraint name="Border" perimeter="0" x="0" y="0.5"/>
-<constraint name="Border" perimeter="0" x="1" y="0.5"/>
-<constraint name="Border" perimeter="0" x="0.145" y="0.145"/>
-<constraint name="Border" perimeter="0" x="0.145" y="0.855"/>
-<constraint name="Border" perimeter="0" x="0.855" y="0.145"/>
-<constraint name="Border" perimeter="0" x="0.855" y="0.855"/>
-</connections>
-<background>
-<ellipse h="60" w="99" x="0" y="0"/>
-</background>
-<foreground>
-<fillstroke/>
-<ellipse h="52" w="92" x="3.5" y="3.5"/>
-<fillstroke/>
-</foreground>
-</shape>
-  <shape aspect="variable" graphicRef="symbols/General/Circle.xml" h="60" name="Circle" strokewidth="inherit" w="60">
-<connections>
-<constraint name="Border" perimeter="0" x="0.5" y="0"/>
-<constraint name="Border" perimeter="0" x="0.5" y="1"/>
-<constraint name="Border" perimeter="0" x="0" y="0.5"/>
-<constraint name="Border" perimeter="0" x="1" y="0.5"/>
-<constraint name="Border" perimeter="0" x="0.145" y="0.145"/>
-<constraint name="Border" perimeter="0" x="0.145" y="0.855"/>
-<constraint name="Border" perimeter="0" x="0.855" y="0.145"/>
-<constraint name="Border" perimeter="0" x="0.855" y="0.855"/>
-</connections>
-<background>
-<ellipse h="60" w="60" x="0" y="0"/>
-</background>
-<foreground>
-<fillstroke/>
-</foreground>
-</shape>
-  <shape aspect="variable" graphicRef="symbols/General/ArrowUP.xml" h="97.5" name="ArrowUP" strokewidth="inherit" w="70">
-<connections>
-<constraint name="Up" perimeter="0" x="0.5" y="0"/>
-<constraint name="Down" perimeter="0" x="0.5" y="1"/>
-</connections>
-<background>
-<path>
-<move x="20" y="97.5"/>
-<line x="20" y="38.5"/>
-<line x="0" y="38.5"/>
-<line x="35" y="0"/>
-<line x="70" y="38.5"/>
-<line x="50" y="38.5"/>
-<line x="50" y="97.5"/>
 <close/>
 </path>
 </background>

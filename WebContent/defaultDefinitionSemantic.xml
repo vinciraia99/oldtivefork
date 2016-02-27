@@ -1,91 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="EntityRelationship">
+<language name="FlowChart">
 
-	<semantic ref="entity">
-		<text graphicRef="Center" name="Testo" type="string"/>
-		<property name="Nome" type="string" condition="">
-			<function name="assign" path="" param="@Testo"/>
-		</property>
-		<property name="Key" type="list(string)" condition="size($Key)>'0'">
-			<function name="add" path="/line1/key_attribute" param="@Testo"/>
-			<function name="add" path="/line1/generalization/touch/entity" param="$Key"/>		
-		</property>
-		<property name="Attribute" type="list(string)" condition="">
-			<function name="add" path="/line1/attribute" param="@Testo"/>
-			<function name="add" path="/line1/comp_attribute/line2/elem_attribute" param="@Testo"/>
-			<function name="add" path="/line1[@Tipo='\(([01],1)\)']/bin_rel" param="$Attribute"/>
-			<function name="add" path="/line1/generalization/touch/entity" param="$Attribute"/>
-		</property>
-		<property name="Rif" type="list(string)" condition="">
-			<function name="add" path="/line1[@Tipo='\(([01],1)\)']/bin_rel/line1[@Tipo='\(([01],N)\)']/entity" param="$Key"/>
-			<function name="add" path="/line1/generalization/touch/entity" param="$Rif"/>
-		</property>
-		<property name="Printed" type="list(string)" condition="">
-			<function name="exist" path="/touch/" param=""/>
+	<semantic ref="begin">
+		<property name="Completed" type="boolean" condition="">
+			<function name="assign" path="" param="true"/>
 		</property>
 		<property>
-			<function name="print" path="[$Printed='false']" param="&lt;b&gt;{$Nome}&lt;/b&gt; (&lt;u&gt;{$Key}&lt;/u&gt;{if([size($Attribute)>'0'],', ','')}&lt;i&gt;{$Attribute}&lt;/i&gt;{if([size($Rif)>'0'],', ','')}{$Rif})"/>
+			<function name="print" path="" param="int main() {"/>
 		</property>
+		<visit priority="1" order="1">
+			<path value="[follAttName='down'][follAttType='exit']/*"/>
+		</visit>		
 	</semantic>
-	
-	<semantic ref="mval_attribute">
-		<text graphicRef="Center" name="Testo" type="string"/>
-		<property name="Nome" type="string" condition="">
-			<function name="assign" path="" param="@Testo"/>
+
+	<semantic ref="pred">
+		<text graphicRef="Center" name="Cond" type="string"/>
+		<property name="Completed" type="boolean" condition="">
+			<function name="assign" path="" param="true"/>
 		</property>
-		<property name="Key" type="list(string)" condition="size($Key)>'0'">
-			<function name="add" path="" param="@Testo"/>
-			<function name="add" path="/line1/entity" param="$Key"/>
+		<property name="GotoTrue" type="string" condition="">
+			<function name="assign" path="[follAttType='exit']/arrow[@Rel='true']/*" param="$Id"/>
 		</property>
-		<property>
-			<function name="print" path="" param="&lt;b&gt;{$Nome}&lt;/b&gt; (&lt;u&gt;{$Key}&lt;/u&gt;)"/>
+		<property name="GotoFalse" type="string" condition="">
+			<function name="assign" path="[follAttType='exit']/arrow[@Rel='false']/*" param="$Id"/>
 		</property>
-	</semantic>
-	
-	<semantic ref="bin_rel">
-		<text graphicRef="Center" name="Testo" type="string"/>
-		<property name="Nome" type="string" condition="">
-			<function name="assign" path="" param="@Testo"/>
+		<property name="Count" type="int" condition="">
+			<function name="size" path="[follAttName='up']/*" param=""/>
 		</property>
-		<property name="Key" type="list(string)" condition="">
-			<function name="add" path="/line1[@Tipo='\(([01],N)\)']/entity" param="$Key"/>		
-		</property>
-		<property name="Attribute" type="list(string)" condition="">
-			<function name="add" path="/line1/attribute" param="@Testo"/>
-		</property>
-		<property name="Count" type="list(string)" condition="">
-			<function name="add" path="/line1[@Tipo='\(([01],N)\)']/entity" param=""/>
+		<property name="Printed" type="boolean" condition="">
+			<function name="exist" path="[$Count>'1']" param=""/>
 		</property>
 		<property>
-			<function name="print" path="[size($Count)='2']" param="&lt;b&gt;{$Nome}&lt;/b&gt; (&lt;u&gt;{$Key}&lt;/u&gt;{if([size($Attribute)>'0'],', ','')}&lt;i&gt;{$Attribute}&lt;/i&gt;)"/>			
+			<function name="print" path="[$Printed='true']" param="{%$Id%}:"/>
+			<function name="print" path="" param="if ({%@Cond%}) { goto {%$GotoTrue%};} else{ goto {%$GotoFalse%};}"/>
 		</property>
+		<visit priority="1" order="5">
+			<path value="[follAttType='exit']/arrow[@rel='true']"/>
+			<path value="[follAttType='exit']/arrow[@rel='false']"/>
+		</visit>
 	</semantic>
 	
-	<semantic ref="key_attribute">
-		<text graphicRef="Center" name="Testo" type="string"/>
+	<semantic ref="arrow">
+		<text graphicRef="Center" name="Rel" type="([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])?"/>
+		<property name="Completed" type="boolean" condition="">
+			<function name="assign" path="" param="true"/>
+		</property>
+		<property name="Goto" type="string" condition="">
+			<function name="assign" path="[follAttName='head']/*" param="$Id"/>
+		</property>
+		<property name="Printed" type="boolean" condition="">
+			<function name="isset" path="[follAttName='head']/*"  param="$Completed"/>
+		</property>
+		<property name="Pred" type="boolean" condition="">
+			<function name="exist" path="[follAttName='tail']/pred" param=""/>
+		</property>
+		<property name="End" type="boolean" condition="">
+			<function name="exist" path="/end" param=""/>
+		</property>
+		<property>
+			<function name="print" path="[$Printed='true'][$Pred='false']" param="goto {%$Goto%};"/>
+			<function name="print" path="[$End='true']" param="goto {%$Goto%};"/>
+		</property>
+		<visit priority="1" order="2">
+			<path value="[follAttName='head']/*"/>
+		</visit>
 	</semantic>
 	
-	<semantic ref="attribute">
-		<text graphicRef="Center" name="Testo" type="string"/>
+	<semantic ref="io">
+		<text graphicRef="Center" name="Code" type="string"/>
+		<property name="Completed" type="boolean" condition="">
+			<function name="assign" path="" param="true"/>
+		</property>
+		<property name="Count" type="int" condition="">
+			<function name="size" path="[follAttName='up']/*" param=""/>
+		</property>
+		<property name="Printed" type="boolean" condition="">
+			<function name="exist" path="[$Count>'1']"  param=""/>
+			<function name="exist" path="[follAttName='up']/arrow/pred"  param=""/>
+		</property>
+		<property>
+			<function name="print" path="[$Printed='true']" param="{%$Id%}:"/>
+			<function name="print" path="" param="@Code"/>
+		</property>
+		<visit priority="1" order="4">
+			<path value="[follAttName='down']/*"/>
+		</visit>
 	</semantic>
 	
-	<semantic ref="elem_attribute">
-		<text graphicRef="Center" name="Testo" type="string"/>
+	<semantic ref="stat">
+		<text graphicRef="Center" name="Code" type="string"/>
+		<property name="Completed" type="boolean" condition="">
+			<function name="assign" path="" param="true"/>
+		</property>
+		<property name="Count" type="int" condition="">
+			<function name="size" path="[follAttName='up']/*" param=""/>
+		</property>
+		<property name="Printed" type="boolean" condition="">
+			<function name="exist" path="[$Count>'1']"  param=""/>
+			<function name="exist" path="[follAttName='up']/arrow/pred"  param=""/>
+		</property>
+		<property>
+			<function name="print" path="[$Printed='true']" param="{%$Id%}:"/>
+			<function name="print" path="" param="@Code"/>
+		</property>
+		<visit priority="1" order="3">
+			<path value="[follAttName='down']/*"/>
+		</visit>
 	</semantic>
 	
-	<semantic ref="comp_attribute">
-		<text graphicRef="Center" name="Testo" type="string"/>
+	<semantic ref="end">
+		<property name="Completed" type="boolean" condition="">
+			<function name="assign" path="" param="true"/>
+		</property>
+		<property>
+			<function name="print" path="" param="{%$Id%}:; }"/>
+		</property>
+		<visit priority="2" order="6">
+			<path value=""/>
+		</visit>
 	</semantic>
 	
-	<semantic ref="line1">
-		<text graphicRef="Center" name="Tipo" type="([(][01],[1N][)])?"/>
-	</semantic>
-	
-	<semantic ref="generalization">
-		<text graphicRef="Center" name="Testo" type="string"/>
-	</semantic>
-	
-	<semantic ref="touch">
-		<text graphicRef="Center" name="Testo" type="string"/>
-	</semantic>
 </language>

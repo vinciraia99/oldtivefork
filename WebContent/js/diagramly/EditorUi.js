@@ -742,7 +742,7 @@
 				mappaRis[rs[i].Key] = true;
 			}
 						
-			aggiungiTitolo(rs[i].Key);
+			aggiungiTitolo(rs[i].Key,rs[i].Msg);
 			aggiungiDescrizione(rs[i].Key,rs[i].Error);	
 		}
 		
@@ -762,7 +762,7 @@
 		for (var i=0;i<ln;i++) {
 			mappaRis[rs[i].Key] = true;
 			
-			aggiungiTitolo(rs[i].Key);
+			aggiungiTitolo(rs[i].Key,rs[i].Msg);
 			aggiungiDescrizione(rs[i].Key,rs[i].Error);	
 		}
 		
@@ -1205,14 +1205,20 @@
 				}
 			}
 			
-			appText = xmlDoc.createElement("aptext");
-			appText.setAttribute("graphicRef", "Center");
-			if ((sym.getAttribute('label', '')!=null) && (sym.getAttribute('label', '')!="")) {
-				appText.setAttribute("value", sym.getAttribute('label', ''));
-			} else {
-				appText.setAttribute("value", "S_" + sym.id);
+			var graphicRefKeyText = value.getAttribute("graphicRef").toLowerCase();
+			
+			if (mappaRefSemantic[graphicRefKeyText] != undefined) {
+				appText = xmlDoc.createElement("aptext");
+				appText.setAttribute("graphicRef", "Center");
+				if ((sym.getAttribute('label', '')=="") || (sym.getAttribute('label', '')==TEXTDEFAULT)) {
+					appText.setAttribute("value", "S_" + sym.id);					
+				} else {
+					var risStr = sym.getAttribute('label', '').replace("<p>","").replace("</p>","");
+					appText.setAttribute("value", risStr);
+				}
+				elem.appendChild(appText);
 			}
-			elem.appendChild(appText);
+			
 			root.appendChild(elem);
 		}
 
@@ -1230,15 +1236,18 @@
 				// attP.setAttribute("connRef","C_"+sym.edges[k].id+".Head");
 			}
 			
+			graphicRefKeyText=style.graphicRef.toLowerCase();
 			if (con.value.length>0) {
-				
-				var exp = con.value.replace(/\s*/g,"");
-				if (exp.length>0){
-					appText = xmlDoc.createElement("aptext");
-					appText.setAttribute("graphicRef", "Center");
-					appText.setAttribute("value", con.value);
-					connector.appendChild(appText);
-				}
+					
+				if ((con.value!=TEXTDEFAULT) && (mappaRefSemantic[graphicRefKeyText] != undefined)) {
+					var exp = con.value.replace(/\s*/g,"");
+					if (exp.length>0){
+						appText = xmlDoc.createElement("aptext");
+						appText.setAttribute("graphicRef", "Center");
+						appText.setAttribute("value", con.value.replace("<p>","").replace("</p>",""));
+						connector.appendChild(appText);
+					}
+				} 
 			}
 			
 			root.appendChild(connector);
@@ -1270,7 +1279,7 @@
 						
 			var onload = function(req) {
 				
-				aggiungiTitolo("Test");
+				aggiungiTitolo("Test","Test");
 				aggiungiDescrizione("Test",req.getText());
 			}
 			new mxXmlRequest(INTERACTIVE_URL,'Op=test&xml=' + xml, 'POST', false).send(onload);

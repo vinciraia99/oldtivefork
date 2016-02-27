@@ -47,7 +47,7 @@ public class SavePreviewServlet extends HttpServlet
 	}
 	
 	public static void handlePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		if (request.getContentLength() < Constants.MAX_REQUEST_SIZE) 
+		if (request.getContentLength() < 10485760) 
 		{
 			long t0 = System.currentTimeMillis();
 			String mime = null;

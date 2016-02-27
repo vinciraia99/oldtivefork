@@ -789,14 +789,14 @@ function colorBorderDiv(id){
 	}
 }
 
-function aggiungiTitolo(key) {
+function aggiungiTitolo(key,msg) {
 		
     var divContentuo = document.getElementById("contenuto");
     var div = document.createElement('div');
 
     div.style = "margin-top: 5px;height: 20px; border: 1px solid #e9e9e9; background: #f9f9f9; padding: 1px; text-align: center; vertical-align: top;";
     div.id="T_"+key;
-    div.innerHTML=key;
+    div.innerHTML=msg;
     divContentuo.appendChild(div);	
 }
 
