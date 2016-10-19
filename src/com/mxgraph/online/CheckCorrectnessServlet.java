@@ -108,6 +108,9 @@ public class CheckCorrectnessServlet extends HttpServlet {
 						ResultSemantic resSem = TesterSemantic.runSem(new FileInputStream(new File(s+"defaultDefinitionSemantic.xml")),res);
 						problems = resSem.getProblems();
 						if (!resSem.isError()){	
+							ArrayList<String> c = new ArrayList<String>();
+							c.add("The diagram is correct.");
+							problems.put("Status", c);
 							ArrayList<String> l = new ArrayList<String>();
 							l.add(resSem.getGraphSemantic().getResult());
 							problems.put("Result", l);
