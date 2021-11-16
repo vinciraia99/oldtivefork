@@ -947,26 +947,40 @@ Editor.prototype.initStencilRegistry = function()
 	mxStencilRegistry.loadStencilSet = function(stencilFile, postStencilLoad, force)
 	{
 		force = (force != null) ? force : false;
-		
-		// Uses additional cache for detecting previous load attempts
-		var xmlDoc = mxStencilRegistry.packages[stencilFile];
-		
-		if (force || xmlDoc == null)
-		{
-			var install = false;
-			
-			if (xmlDoc == null)
-			{
-				var req = mxUtils.load(stencilFile);
-				xmlDoc = req.getXml();
-				
-				mxStencilRegistry.packages[stencilFile] = xmlDoc;
+		if(localStorage.getItem("STENCIL") != null){
+			const xmlStr = localStorage.getItem("STENCIL");
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(xmlStr, "application/xml");
+			const errorNode = doc.querySelector("parsererror");
+			if (errorNode) {
+				console.error("error while parsing XML STENCIL");
+			} else {
+				xmlDoc = doc;
 				install = true;
+				mxStencilRegistry.parseStencilSet(xmlDoc, postStencilLoad, install);
+				console.log("External stencil uploaded");
 			}
-		
-			mxStencilRegistry.parseStencilSet(xmlDoc, postStencilLoad, install);
+		}else {
+			// Uses additional cache for detecting previous load attempts
+			var xmlDoc = mxStencilRegistry.packages[stencilFile];
+
+			if (force || xmlDoc == null) {
+
+				var install = false;
+
+				if (xmlDoc == null) {
+
+					var req = mxUtils.load(stencilFile);
+					xmlDoc = req.getXml();
+
+					mxStencilRegistry.packages[stencilFile] = xmlDoc;
+					install = true;
+				}
+
+				mxStencilRegistry.parseStencilSet(xmlDoc, postStencilLoad, install);
+			}
+			//console.log(xmlDoc);
 		}
-		//console.log(xmlDoc);
 	};
 	
 	// Parses the given stencil set

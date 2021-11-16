@@ -22,6 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import XMLUploadExternalFile.*;
+
 
 
 import javax.script.ScriptException;
@@ -30,6 +32,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
@@ -71,6 +74,8 @@ public class CheckCorrectnessServlet extends HttpServlet {
 	
 	public static void handlePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, CloneNotSupportedException, ScriptException  {
 		//if (request.getContentLength() < Constants.MAX_REQUEST_SIZE)
+		HttpSession session=request.getSession();  //VINCENZORAIA
+
 		if (request.getContentLength() < 10485760)
 		{
 			long t0 = System.currentTimeMillis();
@@ -100,12 +105,28 @@ public class CheckCorrectnessServlet extends HttpServlet {
 					
 					//PrintWriter out = response.getWriter();
 					ByteArrayInputStream input = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8));
-					Result res=Tester.run(input, new FileInputStream(new File(s+"defaultDefinition.xml")));
+					Result res=null;
+					//VINCENZO RAIA
+					DefaultDefinitionCreator d = new DefaultDefinitionCreator();
+					SemanticDefinitionCreator semantic = new SemanticDefinitionCreator();
+					File temp = d.getDefinition();
+					//---------------------
+					if(temp !=null){
+						res=Tester.run(input, new FileInputStream(temp));
+					}else{
+						res=Tester.run(input, new FileInputStream(new File(s+"\\defaultDefinition.xml")));
+					}
 					HashMap<String, ArrayList<TextArea>> texts = res.getTexts();
 					
 					HashMap<String, ArrayList<String>> problems;
 					if (!res.isError()) {
-						ResultSemantic resSem = TesterSemantic.runSem(new FileInputStream(new File(s+"defaultDefinitionSemantic.xml")),res);
+						temp = semantic.getSemantic();
+						ResultSemantic resSem = null;
+						if(temp != null){
+							resSem = TesterSemantic.runSem(new FileInputStream(temp),res);
+						}else{
+							resSem = TesterSemantic.runSem(new FileInputStream(new File(s+"\\defaultDefinitionSemantic.xml")),res);
+						}
 						problems = resSem.getProblems();
 						if (!resSem.isError()){	
 							ArrayList<String> c = new ArrayList<String>();

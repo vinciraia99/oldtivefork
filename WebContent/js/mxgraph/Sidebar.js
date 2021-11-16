@@ -1265,6 +1265,7 @@ Sidebar.prototype.addStencilPalette = function(id, title, stencilFile, style, ig
 		console.log(shapes);*/
 		//console.log("Prova shape");
 		//console.log(shape);
+
 		mxStencilRegistry.loadStencilSet(stencilFile, mxUtils.bind(this, function(packageName, stencilName, displayName, w, h)
 		{
 			if (ignore == null || mxUtils.indexOf(ignore, stencilName) < 0)
@@ -1318,6 +1319,7 @@ Sidebar.prototype.addCustomStencilPalette = function(id, title, stencilFile, sty
 		console.log(shapes);*/
 		//console.log("Prova shape");
 		//console.log(shape);
+
 		mxStencilRegistry.loadStencilSet(stencilFile, mxUtils.bind(this, function(packageName, stencilName, displayName, w, h)
 		{
 			if (ignore == null || mxUtils.indexOf(ignore, stencilName) < 0)
@@ -1349,21 +1351,31 @@ Sidebar.prototype.addCustomStencilPalette = function(id, title, stencilFile, sty
 					Math.round(w * scale), Math.round(h * scale),shape, nome, true));
 			}
 		}), true);
-		if (window.XMLHttpRequest)
-        {
-            xhttp=new XMLHttpRequest();
-        }
-        else
-        {
-            xhttp=new ActiveXObject("Microsoft.XMLDOM");
-        }
 
-        xhttp.open("GET",connectorsFile,false);
-        xhttp.send();
-       // console.log(xhttp.responseXML.getElementsByTagName("connector")[0].getElementsByTagName("values")[0]);
-	   
-        var connectors = xhttp.responseXML.getElementsByTagName("connector");
-        
+		if(localStorage.getItem("CONNECTOR") != null){
+			const xmlStr = localStorage.getItem("CONNECTOR");
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(xmlStr, "application/xml");
+			const errorNode = doc.querySelector("parsererror");
+			if (errorNode) {
+				console.error("error while parsing XML CONNECTOR");
+			} else {
+				var connectors = doc.getElementsByTagName("connector");
+				console.log("External connector uploaded");
+			}
+		}else {
+			if (window.XMLHttpRequest) {
+				xhttp = new XMLHttpRequest();
+			} else {
+				xhttp = new ActiveXObject("Microsoft.XMLDOM");
+			}
+
+			xhttp.open("GET", connectorsFile, false);
+			xhttp.send();
+			//console.log(xhttp.responseXML.getElementsByTagName("connector")[0].getElementsByTagName("values")[0]);
+
+			var connectors = xhttp.responseXML.getElementsByTagName("connector");
+		}
         for(var i=0;i<connectors.length;i++)
         {
         	

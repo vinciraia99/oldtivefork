@@ -1316,6 +1316,14 @@
 		if (xml.length < MAX_REQUEST_SIZE) {
 			xml = encodeURIComponent(xml);
 			clearConsole();
+			if(localStorage.getItem("RULES")!=null){
+				$.post( "rulesgen", { n1: localStorage.getItem("RULES")})
+					.done();
+			}
+			if(localStorage.getItem("SEMANTIC_RULES")!=null){
+				$.post( "semanticgen", { n1: localStorage.getItem("SEMANTIC_RULES")})
+					.done();
+			}
 			new mxXmlRequest(CHECK_URL, 'xml=' + xml, 'POST', false).send(colorDiagramComplete);
 			colorGraph(this.editor.graph);
 			this.savePreview();
