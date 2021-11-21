@@ -1,6 +1,7 @@
 package com.mxgraph.online;
 
 
+import com.sun.corba.se.spi.orbutil.fsm.Input;
 import it.unisa.di.weblab.localcontext.ParserXML;
 import it.unisa.di.weblab.localcontext.ParserXMLDefinition;
 import it.unisa.di.weblab.localcontext.Tester;
@@ -10,11 +11,7 @@ import it.unisa.di.weblab.localcontext.semantic.TesterSemantic;
 import it.unisa.di.weblab.localcontext.semantic.TesterSemantic.ResultSemantic;
 import it.unisa.di.weblab.localcontext.semantic.TextArea;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -109,10 +106,10 @@ public class CheckCorrectnessServlet extends HttpServlet {
 					//VINCENZO RAIA
 					DefaultDefinitionCreator d = new DefaultDefinitionCreator();
 					SemanticDefinitionCreator semantic = new SemanticDefinitionCreator();
-					File temp = d.getDefinition();
+					InputStream temp = d.getDefinition();
 					//---------------------
 					if(temp !=null){
-						res=Tester.run(input, new FileInputStream(temp));
+						res=Tester.run(input, temp);
 					}else{
 						res=Tester.run(input, new FileInputStream(new File(s+"\\defaultDefinition.xml")));
 					}
@@ -123,7 +120,7 @@ public class CheckCorrectnessServlet extends HttpServlet {
 						temp = semantic.getSemantic();
 						ResultSemantic resSem = null;
 						if(temp != null){
-							resSem = TesterSemantic.runSem(new FileInputStream(temp),res);
+							resSem = TesterSemantic.runSem(temp,res);
 						}else{
 							resSem = TesterSemantic.runSem(new FileInputStream(new File(s+"\\defaultDefinitionSemantic.xml")),res);
 						}
