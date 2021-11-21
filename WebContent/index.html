@@ -4,6 +4,18 @@
 <head>
 	<!--CUSTOM_PARAMETERS - Title, description, etc-->
     <title>TiVe</title>
+	<script>
+		//verifica che se l'input deglie external stencil è un file xml che viene richiamata alla riga 630 in Diagramly.js
+		function checkXMLExternalInput(input)
+		{
+			var value = input.name;
+			var res = value.substr(value.lastIndexOf('.')) == '.xml';
+			if (!res) {
+				return false;
+			}
+			return true;
+		}
+	</script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="Description" content="draw.io is a free online diagram drawing application for workflow, BPM, org charts, UML, ER, network diagrams">
     <meta name="Keywords" content="diagram, online, drawing, javascript">
@@ -325,6 +337,7 @@
 	</script>
 </head>
 <body class="geEditor">
+<input id="file-input" type="file" name="name" style="display: none;" /><!-- Input nascosto che serve a caricare gli stencil,rules e connector esterno -->
 <div id="geInfo">
 	<div class="geBlock">
 		<h1>Free Online Diagramming Software</h1>
@@ -644,6 +657,11 @@ if (urlParams['test'] == '1' || urlParams['dev'] == '1')
 	mxLog.debug('Development mode:', (urlParams['dev'] == '1') ? 'active' : 'inactive');
 	mxLog.debug('Test mode:', (urlParams['test'] == '1') ? 'active' : 'inactive');
 }
+</script>
+<script>
+	if(localStorage.getItem("STENCIL") != null){
+		document.getElementsByTagName("a")[33].innerText=stencilName;
+	}
 </script>
 </body>
 </html>

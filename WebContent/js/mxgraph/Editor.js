@@ -5,7 +5,7 @@
 // Specifies if local storage should be used (eg. on the iPad which has no filesystem)
 var useLocalStorage = (mxClient.IS_TOUCH || urlParams['storage'] == 'local') && typeof(localStorage) != 'undefined';
 var fileSupport = window.File != null && window.FileReader != null && window.FileList != null;
-
+var stencilName;
 // Specifies if connector should be shown on selected cells
 var touchStyle = mxClient.IS_TOUCH || urlParams['touch'] == '1';
 
@@ -957,6 +957,7 @@ Editor.prototype.initStencilRegistry = function()
 			} else {
 				xmlDoc = doc;
 				install = true;
+				stencilName = doc.getElementsByTagName('shapes')[0].getAttribute('name');
 				mxStencilRegistry.parseStencilSet(xmlDoc, postStencilLoad, install);
 				console.log("External stencil uploaded");
 			}
@@ -986,7 +987,6 @@ Editor.prototype.initStencilRegistry = function()
 	// Parses the given stencil set
 	mxStencilRegistry.parseStencilSet = function(xmlDocument, postStencilLoad, install)
 	{
-		
 		install = (install != null) ? install : true;
 		var root = xmlDocument.documentElement;
 		shape = root.firstChild;

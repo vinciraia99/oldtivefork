@@ -17,6 +17,7 @@
 
 	// Initializes the user interface
 	var editorUiInit = EditorUi.prototype.init;
+	editorUiGlobal = editorUiInit;
 	EditorUi.prototype.init = function() {
 		editorUiInit.apply(this, arguments);
 		var signs = this.sidebar.signs;

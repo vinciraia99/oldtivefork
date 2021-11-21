@@ -286,10 +286,13 @@ Menus.prototype.init = function()
 		
 		this.addMenuItems(menu, ['-', 'zoomIn', 'zoomOut', '-', 'fitWindow', 'customZoom', '-', 'fitPage', 'fitPageWidth'], parent);
 	})));
+
 	this.put('file', new Menu(mxUtils.bind(this, function(menu, parent)
 	{
+
 		this.addMenuItems(menu, ['new', 'open', '-', 'save', 'saveAs', '-', 'import', 'export', '-', 'editFile', '-', 'pageSetup', 'print','xmlInput'], parent);
 	})));
+
 	this.put('edit', new Menu(mxUtils.bind(this, function(menu, parent)
 	{
 		this.addMenuItems(menu, ['undo', 'redo', '-', 'cut', 'copy', 'paste', 'delete', '-', 'duplicate', '-',
@@ -304,6 +307,12 @@ Menus.prototype.init = function()
 	this.put('help', new Menu(mxUtils.bind(this, function(menu, parent)
 	{
 		this.addMenuItems(menu, ['help', '-', 'about']);
+	})));
+
+	this.put('loadexternalinput', new Menu(mxUtils.bind(this, function(menu, parent)
+	{
+		this.addMenuItems(menu, ['loadexternalinput']);
+		// CUSTOM MENU END
 	})));
 };
 
@@ -593,7 +602,7 @@ Menus.prototype.createPopupMenu = function(menu, cell, evt)
 Menus.prototype.createMenubar = function(container)
 {
 	var menubar = new Menubar(this.editorUi, container);
-	var menus = ['file', 'edit', 'view', 'format', 'text', 'arrange', 'options', 'help'];
+	var menus = ['file', 'edit', 'view', 'format', 'text', 'arrange', 'options', 'help','loadexternalinput'];
 	
 	for (var i = 0; i < menus.length; i++)
 	{

@@ -615,6 +615,145 @@ function setCurrentXml(data, filename)
 
 			this.addMenuItems(menu, ['import', 'export', '-', 'embed', 'editFile', '-', 'pageSetup', 'print','xmlInput'], parent);
 		})));
+
+		this.put('loadexternalinput', new Menu(mxUtils.bind(this, function(menu, parent)
+		{
+			// CUSTOM MENU START
+			// LOAD STENCIL ACTION
+			this.addMenuItems(menu, ['loadStencil', 'loadConnectors', 'loadRules', 'loadSemantiRules']);
+			editorUi.actions.addAction('loadStencil', function()
+			{
+				// load custom palette
+				document.getElementById('file-input').onchange = function(e) {
+					var file = e.target.files[0];
+					if (!file) {
+						return;
+					}
+					if(!checkXMLExternalInput(file)){
+						mxUtils.alert("XML is not valid");
+						console.error("XML is not valid");
+						return;
+					}
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						try {
+							let contents = e.target.result;
+							let data = new Blob([contents], {type: 'application/xml'})
+							let url = URL.createObjectURL(data);
+							let parser = new DOMParser();
+							let stencilXML = parser.parseFromString(contents, 'application/xml');
+							let stencilName = stencilXML.getElementsByTagName('shapes')[0].getAttribute('name');
+							localStorage.setItem('STENCIL', contents);
+							console.log("Stencil uploaded");
+							mxUtils.alert("Stencil uploaded");
+							editorUi.sidebar.addStencilPalette(stencilName.toLowerCase, stencilName, url,
+								';whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2');
+							editorUi.sidebar.removePalette("FlowChart");
+						}catch (error){
+							mxUtils.alert("XML is not valid");
+							console.error("XML is not valid");
+							console.error(error);
+						}
+					};
+					reader.readAsText(file);
+				}
+				document.getElementById('file-input').click();
+			});
+
+			// LOAD CONNECTORS ACTION
+			editorUi.actions.addAction('loadConnectors', function()
+			{
+				// load custom connector palette
+				document.getElementById('file-input').onchange = function(e) {
+					var file = e.target.files[0];
+					if (!file) {
+						return;
+					}
+					if(!checkXMLExternalInput(file)){
+						mxUtils.alert("XML is not valid");
+						console.error("XML is not valid");
+						return;
+					}
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						try {
+							let contents = e.target.result;
+							let data = new Blob([contents], {type: 'application/xml'})
+							let url = URL.createObjectURL(data);
+							let parser = new DOMParser();
+							let stencilXML = parser.parseFromString(contents, 'application/xml');
+							let stencilName = stencilXML.getElementsByTagName('connectors')[0].getAttribute('name');
+							localStorage.setItem('CONNECTOR', contents);
+							console.log("Connector uploaded");
+							mxUtils.alert("Connector uploaded");
+							editorUi.sidebar.addConnectorsPalette(stencilName.toLowerCase, stencilName, url,
+								';whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2');
+						}catch (error){
+							mxUtils.alert("XML is not valid");
+							console.error("XML is not valid");
+							console.error(error);
+						}
+					};
+					reader.readAsText(file);
+				}
+				document.getElementById('file-input').click();
+			});
+
+			// LOAD RULES ACTION
+			editorUi.actions.addAction('loadRules', function()
+			{
+				// load custom connector palette
+				document.getElementById('file-input').onchange = function(e) {
+					var file = e.target.files[0];
+					if (!file) {
+						return;
+					}
+					if(!checkXMLExternalInput(file)){
+						mxUtils.alert("XML is not valid");
+						console.error("XML is not valid");
+						return;
+					}
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						let contents = e.target.result;
+						localStorage.setItem('RULES', contents);
+						console.log("Rules uploaded");
+						mxUtils.alert("Rules uploaded");
+					};
+					reader.readAsText(file);
+				}
+				document.getElementById('file-input').click();
+			});
+
+			// LOAD SEMANTIC RULES ACTION
+			editorUi.actions.addAction('loadSemantiRules', function()
+			{
+				// load custom connector palette
+				document.getElementById('file-input').onchange = function(e) {
+					var file = e.target.files[0];
+					if (!file) {
+						return;
+					}
+					if(!checkXMLExternalInput(file)){
+						mxUtils.alert("XML is not valid");
+						console.error("XML is not valid");
+						return;
+					}
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						let contents = e.target.result;
+						localStorage.setItem('SEMANTIC_RULES', contents);
+						console.log("Semantic rules uploaded");
+						mxUtils.alert("Semantic rules uploaded");
+					};
+					reader.readAsText(file);
+				}
+				document.getElementById('file-input').click();
+			});
+
+
+			// CUSTOM MENU END
+		})));
 	};
 
 	// Sets default style (used in editor.get/setGraphXml below)

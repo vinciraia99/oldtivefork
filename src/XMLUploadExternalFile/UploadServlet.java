@@ -33,4 +33,10 @@ public class UploadServlet extends HttpServlet {
             request.getRequestDispatcher("WEB-INF/jsp/uploadExternal.jsp").forward(request,response);
         }
     }
+
+    protected void doGet(HttpServletRequest request,
+                          HttpServletResponse response) throws ServletException, IOException
+    {
+        request.getRequestDispatcher("index.html").forward(request,response);
+    }
 }
