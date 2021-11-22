@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="DiagramEditor:war">
+    <output-path>$PROJECT_DIR$/classes/artifacts/DiagramEditor_war</output-path>
+    <root id="archive" name="DiagramEditor_war.war">
+      <element id="artifact" artifact-name="DiagramEditor:war exploded" />
+    </root>
+  </artifact>
+</component>

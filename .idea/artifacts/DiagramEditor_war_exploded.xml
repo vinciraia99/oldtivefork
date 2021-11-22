@@ -1,0 +1,40 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="DiagramEditor:war exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/DiagramEditor_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="DiagramEditor" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="appengine-api-1.0-sdk-1.7.4.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="appengine-api-labs.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="appengine-endpoints.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="appengine-jsr107cache-1.7.4.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="jsr107cache-1.1.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="junit-4.8.2.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="mxgraph-core.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="vdxio.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-anim.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-awt-util.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-bridge.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-codec.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-css.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-dom.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-ext.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-gvt.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-parser.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-script.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-svg-dom.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-transcoder.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-util.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="batik-xml.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="xml-apis-ext.jar" module-name="DiagramEditor" />
+          <element id="library" level="module" name="jgrapht-ext-0.9.0-uber.jar" module-name="DiagramEditor" />
+          <element id="library" level="application_server_libraries" name="Tomcat 8.5.72" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="DiagramEditor/web/Web" />
+    </root>
+  </artifact>
+</component>
