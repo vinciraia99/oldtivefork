@@ -6,7 +6,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17eae34e-4511-4b06-b2a0-8b238b9242ab" name="Changes" comment="Added servlet for upload external stencil,rules and connector from pc with upload file xml &#10;Bug fix&#10;Fixed name of container stencil and connector" />
+    <list default="true" id="17eae34e-4511-4b06-b2a0-8b238b9242ab" name="Changes" comment="Added servlet for upload external stencil,rules and connector from pc with upload file xml &#10;Bug fix&#10;Fixed name of container stencil and connector">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/js/diagramly/Diagramly.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/js/diagramly/Diagramly.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/js/diagramly/EditorUi.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/js/diagramly/EditorUi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/js/diagramly/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/js/diagramly/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/js/mxgraph/Editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/js/mxgraph/Editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/dia.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/resources/dia.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/resources/dia_it.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/resources/dia_it.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/stencils/general.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,8 +59,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DrawSePlusPlusFork" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -68,8 +78,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 8.5.72" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.72" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8077/DiagramEditor_war_exploded/" />
+    <configuration name="Tomcat 8.5.73" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.73" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="DiagramEditor:war exploded">
@@ -174,6 +183,10 @@
       <workItem from="1637419406555" duration="13783000" />
       <workItem from="1637523720471" duration="10307000" />
       <workItem from="1637573078580" duration="179000" />
+      <workItem from="1637617501236" duration="1480000" />
+      <workItem from="1637653285982" duration="825000" />
+      <workItem from="1637682374700" duration="2352000" />
+      <workItem from="1638184255112" duration="8259000" />
     </task>
     <task id="LOCAL-00001" summary="Added support upload rules, semantic rules, stencil and connector from local storage">
       <created>1637106479415</created>

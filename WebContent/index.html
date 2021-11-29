@@ -659,8 +659,12 @@ if (urlParams['test'] == '1' || urlParams['dev'] == '1')
 }
 </script>
 <script>
-	if(localStorage.getItem("STENCIL") != null){
-		document.getElementsByTagName("a")[33].innerText=stencilName;
+	try {
+		if(localStorage.getItem("STENCIL") != null){
+			document.getElementsByTagName("a")[33].innerText=stencilName;
+		}
+	} catch (error) {
+		//console.error(error);
 	}
 </script>
 </body>

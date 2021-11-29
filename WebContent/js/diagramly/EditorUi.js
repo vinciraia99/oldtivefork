@@ -1239,6 +1239,7 @@
 			
 			graphicRefKeyText=style.graphicRef.toLowerCase();
 			if (con.value.length>0) {
+
 					
 				if ((con.value!=TEXTDEFAULT) && (mappaRefSemantic[graphicRefKeyText] != undefined)) {
 					var exp = con.value.replace(/\s*/g,"");

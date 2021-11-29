@@ -256,5 +256,6 @@ zoomOut=Zoom Out
 loadStencil=Load Stencil
 loadRules=Load Rules
 loadSemantiRules=Load Semantic Rules
+uploadConfirm=Upload Confirm
 loadConnectors=Load Connectors
 loadexternalinput=Load External stencil,connector,rules and semantic rules

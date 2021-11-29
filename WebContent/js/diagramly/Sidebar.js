@@ -86,10 +86,23 @@
         {
             xhttp=new ActiveXObject("Microsoft.XMLDOM");
         }
-		
-        xhttp.open("GET",'./defaultDefinition.xml',false);
-        xhttp.send();
-        var response = xhttp.responseXML; 
+
+		if(localStorage.getItem("RULES") !=null){
+			var xmlStr = localStorage.getItem("RULES");
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(xmlStr, "application/xml");
+			const errorNode = doc.querySelector("parsererror");
+			if (errorNode) {
+				console.error("error while parsing XML RULES");
+			} else {
+				var response =doc;
+			}
+		}else{
+			xhttp.open("GET",'./defaultDefinition.xml',false);
+			xhttp.send();
+			var response = xhttp.responseXML;
+		}
+
         //console.log(xhttp.responseXML);
         var languageName = response.documentElement.getAttribute("name");
 //        console.log("------------");
@@ -125,11 +138,26 @@
             xhttp2=new ActiveXObject("Microsoft.XMLDOM");
         }
 		
-        xhttp2.open("GET",'./defaultDefinitionSemantic.xml',false);
-        xhttp2.send();
-        var responseSemantic = xhttp2.responseXML;
+
+		if(localStorage.getItem("SEMANTIC_RULES") !=null){
+			var xmlStr = localStorage.getItem("SEMANTIC_RULES");
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(xmlStr, "application/xml");
+			const errorNode = doc.querySelector("parsererror");
+			if (errorNode) {
+				console.error("error while parsing XML SEMANTIC");
+			} else {
+				var responseSemantic =doc;
+			}
+		}else{
+			xhttp2.open("GET",'./defaultDefinitionSemantic.xml',false);
+			xhttp2.send();
+			var responseSemantic = xhttp2.responseXML;
+		}
+
 		var rootSemantic = responseSemantic.documentElement
 		var childSemantic = rootSemantic.firstChild;
+
 		while (childSemantic != null)
 		{
 			if (childSemantic.nodeType == mxConstants.NODETYPE_ELEMENT)	{

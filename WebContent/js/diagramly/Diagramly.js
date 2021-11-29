@@ -3,6 +3,10 @@
  * Copyright (c) 2006-2010, JGraph Ltd
  */
 // For compatibility with open servlet on GAE
+var stencilextfile;
+var rulesextfile;
+var connectorextfile;
+var semanticrulesextfile;
 function setCurrentXml(data, filename)
 {
 	if (window.parent != null && window.parent.openFile != null)
@@ -620,7 +624,7 @@ function setCurrentXml(data, filename)
 		{
 			// CUSTOM MENU START
 			// LOAD STENCIL ACTION
-			this.addMenuItems(menu, ['loadStencil', 'loadConnectors', 'loadRules', 'loadSemantiRules']);
+			this.addMenuItems(menu, ['loadStencil', 'loadConnectors', 'loadRules', 'loadSemantiRules','uploadConfirm']);
 			editorUi.actions.addAction('loadStencil', function()
 			{
 				// load custom palette
@@ -642,13 +646,10 @@ function setCurrentXml(data, filename)
 							let url = URL.createObjectURL(data);
 							let parser = new DOMParser();
 							let stencilXML = parser.parseFromString(contents, 'application/xml');
-							let stencilName = stencilXML.getElementsByTagName('shapes')[0].getAttribute('name');
-							localStorage.setItem('STENCIL', contents);
+							let stencilName1 = stencilXML.getElementsByTagName('shapes')[0].getAttribute('name');
+							stencilextfile = contents;
 							console.log("Stencil uploaded");
 							mxUtils.alert("Stencil uploaded");
-							editorUi.sidebar.addStencilPalette(stencilName.toLowerCase, stencilName, url,
-								';whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2');
-							editorUi.sidebar.removePalette("FlowChart");
 						}catch (error){
 							mxUtils.alert("XML is not valid");
 							console.error("XML is not valid");
@@ -683,11 +684,9 @@ function setCurrentXml(data, filename)
 							let parser = new DOMParser();
 							let stencilXML = parser.parseFromString(contents, 'application/xml');
 							let stencilName = stencilXML.getElementsByTagName('connectors')[0].getAttribute('name');
-							localStorage.setItem('CONNECTOR', contents);
+							connectorextfile = contents;
 							console.log("Connector uploaded");
 							mxUtils.alert("Connector uploaded");
-							editorUi.sidebar.addConnectorsPalette(stencilName.toLowerCase, stencilName, url,
-								';whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2');
 						}catch (error){
 							mxUtils.alert("XML is not valid");
 							console.error("XML is not valid");
@@ -716,7 +715,7 @@ function setCurrentXml(data, filename)
 					var reader = new FileReader();
 					reader.onload = function (e) {
 						let contents = e.target.result;
-						localStorage.setItem('RULES', contents);
+						rulesextfile = contents;
 						console.log("Rules uploaded");
 						mxUtils.alert("Rules uploaded");
 					};
@@ -742,7 +741,7 @@ function setCurrentXml(data, filename)
 					var reader = new FileReader();
 					reader.onload = function (e) {
 						let contents = e.target.result;
-						localStorage.setItem('SEMANTIC_RULES', contents);
+						semanticrulesextfile = contents;
 						console.log("Semantic rules uploaded");
 						mxUtils.alert("Semantic rules uploaded");
 					};
@@ -751,6 +750,30 @@ function setCurrentXml(data, filename)
 				document.getElementById('file-input').click();
 			});
 
+			editorUi.actions.addAction('uploadConfirm', function()
+			{
+				if(stencilextfile!=null){
+					if(connectorextfile!=null){
+						if(rulesextfile!=null){
+							if(semanticrulesextfile!=null){
+								localStorage.setItem("STENCIL",stencilextfile);
+								localStorage.setItem("CONNECTOR",connectorextfile);
+								localStorage.setItem("RULES",rulesextfile);
+								localStorage.setItem("SEMANTIC_RULES",semanticrulesextfile);
+								location.reload();
+							}else{
+								mxUtils.alert("Please add semantic rules file before upload")
+							}
+						}else{
+							mxUtils.alert("Please add rules file before upload")
+						}
+					}else{
+						mxUtils.alert("Please add connector file before upload")
+					}
+				}else{
+					mxUtils.alert("Please add stencil file before upload")
+				}
+			});
 
 			// CUSTOM MENU END
 		})));

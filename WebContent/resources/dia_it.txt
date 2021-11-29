@@ -258,5 +258,6 @@ zoomOut=Rimpicciolisci
 loadStencil=Carica Stencil
 loadRules=Carica Rules
 loadSemantiRules=Carica Semantic Rules
+uploadConfirm=Conferma upload
 loadConnectors=Carica Connectors
 loadexternalinput=Carica stencil,connector,rules e semantic rules dall'esterno
