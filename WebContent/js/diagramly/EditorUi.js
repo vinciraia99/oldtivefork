@@ -1223,6 +1223,7 @@
 			root.appendChild(elem);
 		}
 
+
 		for (i = 0; i < connectors.length; i++) {
 			con = connectors[i];
 			style = grp.getCellStyle(con);

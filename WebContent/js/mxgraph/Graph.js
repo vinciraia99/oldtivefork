@@ -271,11 +271,16 @@ Graph.prototype.getTooltipForCell = function(cell)
  */
 Graph.prototype.convertValueToString = function(cell)
 {
-		
 	if (mxUtils.isNode(cell.value))
 	  {
-		
-		var graphicRef = cell.value.attributes[1].nodeValue.toLowerCase();
+
+		  for(var i=0;i<cell.value.attributes.length;i++){
+			  if(cell.value.attributes[i].localName == "graphicRef"){
+				  var graphicRef = cell.value.attributes[i].nodeValue.toLowerCase();
+				  break;
+			  }
+
+		  }
 		
 //		console.log("|"+ghraphicRef+"|=|"+mappaRefSemantic[ghraphicRef]+"|");
 		

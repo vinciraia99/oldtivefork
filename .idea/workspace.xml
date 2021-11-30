@@ -6,16 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17eae34e-4511-4b06-b2a0-8b238b9242ab" name="Changes" comment="Added servlet for upload external stencil,rules and connector from pc with upload file xml &#10;Bug fix&#10;Fixed name of container stencil and connector">
+    <list default="true" id="17eae34e-4511-4b06-b2a0-8b238b9242ab" name="Changes" comment="Fix upload external stencil conenctor rules and semantic rules. Finally work fine">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/js/diagramly/Diagramly.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/js/diagramly/Diagramly.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/js/diagramly/EditorUi.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/js/diagramly/EditorUi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebContent/js/diagramly/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/js/diagramly/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/js/mxgraph/Editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/js/mxgraph/Editor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/resources/dia.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/resources/dia.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/resources/dia_it.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/resources/dia_it.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebContent/stencils/general.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebContent/js/mxgraph/Graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebContent/js/mxgraph/Graph.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +65,7 @@
       <recent name="C:\Users\vinciraia99\IdeaProjects\diagrameditor\WebContent" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vr99\IdeaProjects\oldtivefork\WebContent\stencils" />
       <recent name="C:\Users\vinciraia99\IdeaProjects\diagrameditor\WebContent\stencils" />
       <recent name="C:\Users\vinciraia99\IdeaProjects\diagrameditor\src" />
     </key>
@@ -186,7 +182,10 @@
       <workItem from="1637617501236" duration="1480000" />
       <workItem from="1637653285982" duration="825000" />
       <workItem from="1637682374700" duration="2352000" />
-      <workItem from="1638184255112" duration="8259000" />
+      <workItem from="1638184255112" duration="8814000" />
+      <workItem from="1638287133403" duration="3365000" />
+      <workItem from="1638293900623" duration="392000" />
+      <workItem from="1638294997814" duration="1718000" />
     </task>
     <task id="LOCAL-00001" summary="Added support upload rules, semantic rules, stencil and connector from local storage">
       <created>1637106479415</created>
@@ -209,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637533865169</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix upload external stencil conenctor rules and semantic rules. Finally work fine">
+      <created>1638201120371</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1638201120371</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +238,8 @@
     <MESSAGE value="Added support upload rules, semantic rules, stencil and connector from local storage" />
     <MESSAGE value="Removed library it.unisa.di.weblab.localcontext and inserted the code in project&#10;Fixed rules xml import bug&#10;Added servlet for upload external stencil,rules and connector form drawseplusplus" />
     <MESSAGE value="Added servlet for upload external stencil,rules and connector from pc with upload file xml &#10;Bug fix&#10;Fixed name of container stencil and connector" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added servlet for upload external stencil,rules and connector from pc with upload file xml &#10;Bug fix&#10;Fixed name of container stencil and connector" />
+    <MESSAGE value="Fix upload external stencil conenctor rules and semantic rules. Finally work fine" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix upload external stencil conenctor rules and semantic rules. Finally work fine" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
