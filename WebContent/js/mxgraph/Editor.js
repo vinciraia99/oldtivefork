@@ -956,7 +956,6 @@ Editor.prototype.initStencilRegistry = function()
 				console.error("error while parsing XML STENCIL");
 			} else {
 				xmlDoc = doc;
-				
 				install = true;
 				stencilName = doc.getElementsByTagName('shapes')[0].getAttribute('name');
 				mxStencilRegistry.parseStencilSet(xmlDoc, postStencilLoad, install);

@@ -770,6 +770,9 @@ function setCurrentXml(data, filename)
 					}else{
 						mxUtils.alert("Please add connector file before upload")
 					}
+				}else if(semanticrulesextfile!=null){
+					localStorage.setItem("SEMANTIC_RULES",semanticrulesextfile);
+					location.reload();
 				}else{
 					mxUtils.alert("Please add stencil file before upload")
 				}

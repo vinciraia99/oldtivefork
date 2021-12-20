@@ -22,6 +22,18 @@
         window.location.href = (window.location.href).replaceAll("/uploadexternal","");
         </c:if>
 
+        <c:if test="${rules !=null && connector != null && stencil != null && semantic != null}">
+        var connector =  decodeURIComponent("${connector}");
+        var stencil = decodeURIComponent("${stencil}");
+        var rules = decodeURIComponent("${rules}");
+        var semantic = decodeURIComponent("${semantic}");
+        localStorage.setItem("RULES",rules.replaceAll("+"," "));
+        localStorage.setItem("CONNECTOR",connector.replaceAll("+"," "));
+        localStorage.setItem("STENCIL",stencil.replaceAll("+"," "));
+        localStorage.setItem("SEMANTIC_RULES",stencil.replaceAll("+"," "));
+        window.location.href = (window.location.href).replaceAll("/uploadexternal","");
+        </c:if>
+
     </script>
     <title>Title</title>
 </head>
