@@ -22,18 +22,6 @@ public class UploadServlet extends HttpServlet {
         String connector = request.getParameter("connector");
         String semantic = request.getParameter("semantic");
 
-
-
-        if(stencil != null && rules != null && connector!=null){
-            String js = URLEncoder.encode(stencil, StandardCharsets.UTF_8.toString());
-            String jr = URLEncoder.encode(rules, StandardCharsets.UTF_8.toString());
-            String jc = URLEncoder.encode(connector, StandardCharsets.UTF_8.toString());
-            request.setAttribute("stencil",js);
-            request.setAttribute("rules",jr);
-            request.setAttribute("connector",jc);
-            request.getRequestDispatcher("WEB-INF/jsp/uploadExternal.jsp").forward(request,response);
-        }
-
         if(stencil != null && rules != null && connector!=null && semantic!= null){
             String js = URLEncoder.encode(stencil, StandardCharsets.UTF_8.toString());
             String jr = URLEncoder.encode(rules, StandardCharsets.UTF_8.toString());
@@ -44,7 +32,17 @@ public class UploadServlet extends HttpServlet {
             request.setAttribute("connector",jc);
             request.setAttribute("semantic",jsem);
             request.getRequestDispatcher("WEB-INF/jsp/uploadExternal.jsp").forward(request,response);
+        } else if(stencil != null && rules != null && connector!=null){
+            String js = URLEncoder.encode(stencil, StandardCharsets.UTF_8.toString());
+            String jr = URLEncoder.encode(rules, StandardCharsets.UTF_8.toString());
+            String jc = URLEncoder.encode(connector, StandardCharsets.UTF_8.toString());
+            request.setAttribute("stencil",js);
+            request.setAttribute("rules",jr);
+            request.setAttribute("connector",jc);
+            request.getRequestDispatcher("WEB-INF/jsp/uploadExternal.jsp").forward(request,response);
         }
+
+
     }
 
     protected void doGet(HttpServletRequest request,

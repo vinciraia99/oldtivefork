@@ -30,7 +30,7 @@
         localStorage.setItem("RULES",rules.replaceAll("+"," "));
         localStorage.setItem("CONNECTOR",connector.replaceAll("+"," "));
         localStorage.setItem("STENCIL",stencil.replaceAll("+"," "));
-        localStorage.setItem("SEMANTIC_RULES",stencil.replaceAll("+"," "));
+        localStorage.setItem("SEMANTIC_RULES",semantic.replaceAll("+"," "));
         window.location.href = (window.location.href).replaceAll("/uploadexternal","");
         </c:if>
 
