@@ -762,7 +762,10 @@ function setCurrentXml(data, filename)
 								localStorage.setItem("SEMANTIC_RULES",semanticrulesextfile);
 								location.reload();
 							}else{
-								mxUtils.alert("Please add semantic rules file before upload")
+								localStorage.setItem("STENCIL",stencilextfile);
+								localStorage.setItem("CONNECTOR",connectorextfile);
+								localStorage.setItem("RULES",rulesextfile);
+								location.reload();
 							}
 						}else{
 							mxUtils.alert("Please add rules file before upload")
